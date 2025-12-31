@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ dark: true }" :class="{ 'dark': dark }">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!--SEO Start-->
+    <title><%= seo.title %></title>
+    <meta name="description" content="<%= seo.description %>">
+    <meta name="robots" content="<%= seo.robots %>">
+    <link rel="canonical" href="<%= seo.canonical %>">
+
+    <meta property="og:title" content="<%= seo.title %>">
+    <meta property="og:description" content="<%= seo.description %>">
+    <meta property="og:image" content="<%= seo.image %>">
+    <meta property="og:url" content="<%= seo.url %>">
+    <meta property="og:type" content="<%= seo.type %>">
+<!--SEO End-->
+
+    <!-- Favicon (ICO fallback for legacy browsers) -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Modern PNG favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/content/img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/content/img/favicon-16x16.png" />
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/content/img/apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="/content/css/leaflet-bundle.css">
+    <script src="/content/js/leaflet_bundle.iife.js"></script>
+
+    <link rel="stylesheet" href="/content/fonts/kfi.css" />
+    <script src="/content/fonts/kfi.js"></script>
+
+    <link href="/content/theme/tailwind.css" rel="stylesheet" />
+    <script defer src="/content/theme/alpine.min.js"></script>
+    <script defer src="/content/theme/theme-colors.js"></script>
+    <script defer src="/content/theme/clsColorTheory.js"></script>
+
+    <!--Components-->
+    <script src="/content/js/clsTailwindComponent.js"></script>
+    <script src="/content/js/clsTailwindCard.js"></script>
+    <script src="/content/js/clsTailwindAlert.js"></script>
+    <script src="/content/js/clsTailwindModal.js"></script>
+    <script src="/content/js/clsTailwindRating.js"></script>
+    <script src="/content/js/clsTailwindCountdown.js"></script>
+    <script src="/content/js/clsTailwindPagination.js"></script>
+    <script src="/content/js/clsTailwindAccordion.js"></script>
+    <script src="/content/js/clsTailwindSteps.js"></script>
+    <script src="/content/js/clsTailwindBanner.js"></script>
+    <script src="/content/js/clsTailwindCallToAction.js"></script>
+    <script src="/content/js/clsTailwindSignupOptions.js"></script>
+    <script src="/content/js/clsTailwindProduct.js"></script>
+    <script src="/content/js/clsTailwindCart.js"></script>
+    <script src="/content/js/clsTailwindTable.js"></script>
+    <script src="/content/js/clsTailwindToggle.js"></script>
+    <script src="/content/js/clsTailwindSlider.js"></script>
+    <script src="/content/js/clsTailwindCommon.js"></script>
+    <script src="/content/js/clsTailwindTooltips.js"></script>
+    <script src="/content/js/clsTailwindContextMenu.js"></script>
+    <script src="/content/js/clsTailwindTimeline.js"></script>
+    <script src="/content/js/clsTailwindChart.js"></script>
+
+    <script src="/content/js/clsTailwindLeafletDiagram.js"></script>
+    
+
+    <script src="/content/js/clsTailwindFishbone.js"></script>
+
+    
+  </head>
+  <body class="flex flex-col min-h-screen overflow-y-auto dark:bg-dark dark:text-white" 
+    x-data="{
+        sidebarOpen: false,
+        collapsed: window.innerWidth >= 768 ? false : true,
+        navItems: [
+            { name: 'Home', href: '/' },
+            {
+                name: 'Dev',
+                children: [
+                    { name: 'Aside', href: '/aside' },
+                    { name: '404', href: '/404' },
+                    { name: 'Colors', href: '/colors' },
+                    { name: 'Font Icons', href: '/font-icons' },
+                    { name: 'Typography', href: '/typography' },
+                    { name: 'Forms', href: '/forms' },
+                    { name: 'Components', href: '/components' },
+                    { name: 'Leaflet', href: '/leaflet' }
+                ]
+            }
+        ],
+        setResponsiveSidebar() {
+            const isDesktop = window.innerWidth >= 768;
+
+            // Update only if layout changed
+            if (this._wasDesktop !== isDesktop) {
+                this._wasDesktop = isDesktop;
+
+                if (isDesktop) {
+                    // Force sidebarOpen = true on desktop so logic stays consistent
+                    this.sidebarOpen = true;
+                } else {
+                    // Collapse for mobile
+                    this.sidebarOpen = false;
+                    this.collapsed = false;
+                }
+            }
+        },
+        dropdownOpen: null,
+        focusNextItem(index, container) {
+            const items = Array.from(container.querySelectorAll('a'));
+            const next = (index + 1) % items.length;
+            items[next]?.focus();
+        },
+        focusPrevItem(index, container) {
+            const items = Array.from(container.querySelectorAll('a'));
+            const prev = (index - 1 + items.length) % items.length;
+            items[prev]?.focus();
+        }
+    }"
+    x-init="
+    setResponsiveSidebar();
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => setResponsiveSidebar(), 100);
+    });
+    if (window.innerWidth >= 768) sidebarOpen = true;
+    "
+    :class="{ 'overflow-hidden': sidebarOpen && window.innerWidth < 768 }"
+    >
+    <a
+        href="#main-content"
+        class="sr-only focus:not-sr-only absolute left-4 top-4 bg-primary text-white px-4 py-2 rounded shadow z-50"
+        >
+        Skip to main content
+    </a>

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "window":
+  {
+    "monitorIndex": 0,
+    "location": "bottom-right",
+    "bufferPx": 0,
+    "width": 180,
+    "height": 250,
+    "minimizeYoffset": 65,
+    "alwaysOnTop": true,
+    "transparent": true,
+    "reappearAfterMacro": true,
+    "reappearDelayMs": 120
+  },
+  "theme":
+  {
+    "mode": "system"
+  },
+  "server":
+  {
+    "host": "127.0.0.1",
+    "port": 3021
+  }
+}

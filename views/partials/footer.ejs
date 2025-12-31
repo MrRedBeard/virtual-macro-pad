@@ -1,0 +1,39 @@
+<footer class="bg-primary text-sm text-white p-4 mt-auto border-t border-gray-700">
+  <div class="max-w-7xl text-5xl mx-auto text-center">
+    <i class="kfi-animal-squirrel"></i>
+    <i class="kfi-mushroom-alt-1"></i>
+    <i class="kfi-beverage-coffee-bean"></i>
+    <i class="kfi-beverage-coffee-cup"></i>
+    <i class="kfi-beard"></i>
+    <i class="kfi-paint-palette"></i>
+  </div>
+</footer>
+<% if (sidebar) { %>
+<!-- Sidebar Tab Toggle (Mobile Only) -->
+<button
+  @click="sidebarOpen = !sidebarOpen"
+  x-show="!sidebarOpen && !_wasDesktop"
+  x-transition
+  x-cloak
+  class="fixed left-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-2 py-3 rounded-r-md shadow md:hidden z-50"
+  aria-label="Open sidebar">
+<i class="kfi-arrow-carrot-2-right text-icon-xs"></i>
+</button>
+<% } %>
+
+<script>
+  
+  (() =>
+  {
+    clsTailwindToggle.autoInit();
+    clsTailwindToggle.observe();
+
+    clsTailwindSlider.autoInit(); 
+    clsTailwindSlider.observe();
+
+    clsTailwindCommon.autoInit();
+
+    new clsTailwindTooltips();
+  })();
+
+</script>

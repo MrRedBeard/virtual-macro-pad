@@ -1,0 +1,1542 @@
+<button @click="dark = !dark" class="mt-4 mb-4 px-4 py-2 bg-gray-700 text-white rounded">
+    Toggle Dark Mode
+</button>
+
+<div class="w-full place-items-end">
+    <div class="breakpoint-badge">
+        Display Size:
+    </div>
+</div>
+
+<h1>clsTailwindLeafletDiagram</h1>
+<div class="diagram w-3/4 h-96"></div>
+
+<script>
+  (() =>
+  {
+
+    // let fb = new clsTailwindLeafletDiagram({
+    //   containerEl: document.querySelector('.diagram'),
+    // });
+
+    const diagram = new clsTailwindLeafletDiagram(
+    {
+      containerEl: document.querySelector('.diagram')
+    });
+
+    diagram.map.contextmenu.insertItem({ text: 'Test Click', callback: () => alert('working') });
+    diagram.map.contextmenu.showAt([34.997, -91.983]);
+
+  })();
+ 
+
+  
+</script>
+
+
+<h1>Context Menu</h1>
+<div class="menuContainer1 bg-pink-400 border border-slate-900 dark:border-white w-60 h-60"></div>
+<div class="menuContainer2 bg-green-400 border border-slate-900 dark:border-white w-60 h-60"></div>
+
+</div>
+<script>
+  const myContextMenu = new clsTailwindContextMenu(
+  {
+    items: [{ label: 'Edit', icon: 'kfi-pencil', onClick: () => alert('Edit') },
+    { label: 'Delete', icon: 'kfi-trash', onClick: () => alert('Delete') },
+    { label: 'View', icon: 'kfi-eye', url: '/view' }]
+  });
+  myContextMenu.bindToElements('.menuContainer1, .menuContainer2');
+
+  //myContextMenu.detach('.menuContainer1'); // Unbind from one
+  //myContextMenu.detach(document.querySelector('.menuContainer1')); // Or this way
+</script>
+
+<h1>Timeline</h1>
+<div class="timelineContainer w-1/2 h-80 relative border"></div>
+<script>
+  // 'vertical-single'|'vertical-alternate'|'horizontal-single'|'horizontal-alternate'
+  const timeline = new clsTailwindTimeline({ containerEl: document.querySelector('.timelineContainer'), type: 'horizontal-alternate', reverse: false });
+  timeline.mount(document.body);
+
+  timeline.addItems([
+    { datetime: '2025-01-01', title: 'Start', content: 'Let’s go!', onclick: () => {}},
+    { datetime: '2025-02-01', title: 'Checkpoint', content: 'Halfway panic.', onclick: () => {}},
+    { datetime: '2025-03-01', title: 'Victory', content: 'Collapse in joy.', onclick: () => {}},
+    { datetime: '2025-01-01', title: 'Start', content: 'Let’s go!', onclick: () => {}},
+    { datetime: '2025-02-01', title: 'Checkpoint', content: 'Halfway panic.', onclick: () => {}},
+    { datetime: '2025-03-01', title: 'Victory', content: 'Collapse in joy.', onclick: () => {}},
+    { datetime: '2025-01-01', title: 'Start', content: 'Let’s go!', onclick: () => {}},
+    { datetime: '2025-02-01', title: 'Checkpoint', content: 'Halfway panic.', onclick: () => {}},
+    { datetime: '2025-03-01', title: 'Victory', content: 'Collapse in joy.', onclick: () => {}},
+    { datetime: '2025-01-01', title: 'Start', content: 'Let’s go!', onclick: () => {}},
+    { datetime: '2025-02-01', title: 'Checkpoint', content: 'Halfway panic.', onclick: () => {}},
+    { datetime: '2025-03-01', title: 'Victory', content: 'Collapse in joy.', onclick: () => {}},
+  ]);
+  
+</script>
+
+<h1>Tables</h1>
+<div class="myTable"></div>
+<script>
+  const table = new clsTailwindTable({
+    data: [
+            {
+              "Name": "Nandor the Relentless",
+              "DoB": "04/06/1262",
+              "Role": "Vampire Warrior",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Laszlo Cravensworth",
+              "DoB": "10/19/1678",
+              "Role": "Vampire Gentleman",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Nadja",
+              "DoB": "03/15/1593",
+              "Role": "Vampire Seductress",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Colin Robinson",
+              "DoB": "01/09/1971",
+              "Role": "Energy Vampire",
+              "Salary": "$53,000"
+            },
+            {
+              "Name": "Guillermo de la Cruz",
+              "DoB": "11/18/1991",
+              "Role": "Familiar/Vampire Hunter",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Baron Afanas",
+              "DoB": "07/07/1034",
+              "Role": "Vampire Overlord",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Brad",
+              "DoB": "07/07/1982",
+              "Role": "Circle K attendant",
+              "Salary": "4.50hr"
+            },
+            {
+              "Name": "The Guide",
+              "DoB": "02/02/1431",
+              "Role": "Tour Coordinator",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Simon the Devious",
+              "DoB": "11/12/1502",
+              "Role": "Rival Vampire",
+              "Salary": "$0"
+            },
+            {
+              "Name": "The Sire",
+              "DoB": "01/01/0001",
+              "Role": "Primordial Vampire",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Count Rapula",
+              "DoB": "08/22/1408",
+              "Role": "Rhyming Vampire",
+              "Salary": "$12.50"
+            },
+            {
+              "Name": "Evie Russell",
+              "DoB": "03/06/1988",
+              "Role": "Emotional Vampire",
+              "Salary": "$47,000"
+            },
+            {
+              "Name": "Kandor the Brooding",
+              "DoB": "04/13/1288",
+              "Role": "Vampire Poet",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Derek",
+              "DoB": "09/17/1994",
+              "Role": "Accidental Vampire",
+              "Salary": "$19.99"
+            },
+            {
+              "Name": "Jan the Collector",
+              "DoB": "12/25/1301",
+              "Role": "Antique Hoarder",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Vladislav the Poker",
+              "DoB": "03/30/1403",
+              "Role": "Stabber",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Viola the Veiled",
+              "DoB": "06/06/1699",
+              "Role": "Vampire Mystic",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Toby the Tech Guy",
+              "DoB": "11/22/1985",
+              "Role": "IT Familiar",
+              "Salary": "$62,000"
+            },
+            {
+              "Name": "Gordok the Hairless",
+              "DoB": "09/09/900",
+              "Role": "Undead Barber",
+              "Salary": "$10"
+            },
+            {
+              "Name": "Regina the Ravenous",
+              "DoB": "12/12/1602",
+              "Role": "Blood Sommelier",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Bill",
+              "DoB": "01/04/1990",
+              "Role": "Human Intern",
+              "Salary": "$15/hr"
+            },
+            {
+              "Name": "Lazzie Jr.",
+              "DoB": "05/15/1800",
+              "Role": "Reincarnated Hedgehog",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Pam the Ghoul",
+              "DoB": "10/20/1877",
+              "Role": "Part-time Screecher",
+              "Salary": "$25/hr"
+            },
+            {
+              "Name": "Ronald the Rotten",
+              "DoB": "03/03/1455",
+              "Role": "Dungeon Accountant",
+              "Salary": "$38,000"
+            },
+            {
+              "Name": "Petyr",
+              "DoB": "07/14/800",
+              "Role": "Cave Vampire",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Cliff the Clerk",
+              "DoB": "06/16/1980",
+              "Role": "DMV Vampire",
+              "Salary": "$41,000"
+            },
+            {
+              "Name": "Enid the Enchantress",
+              "DoB": "02/29/1492",
+              "Role": "Charm Consultant",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Glenda",
+              "DoB": "05/05/1342",
+              "Role": "Vampire Florist",
+              "Salary": "$0"
+            },
+            {
+              "Name": "The Vampire Council",
+              // "DoB": null,
+              "DoB": "10/19/1678",
+              "Role": "Governing Body",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Jeff the Landlord",
+              "DoB": "10/10/1973",
+              "Role": "Nosy Human",
+              "Salary": "$52,000"
+            },
+            {
+              "Name": "Agatha the Ancient",
+              "DoB": "01/01/0005",
+              "Role": "Scroll Keeper",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Mitch",
+              "DoB": "11/11/1999",
+              "Role": "Thrall in Training",
+              "Salary": "$12/hr"
+            },
+            {
+              "Name": "Doug the Dentist",
+              "DoB": "02/28/1968",
+              "Role": "Blood Extractor",
+              "Salary": "$88,000"
+            },
+            {
+              "Name": "Xandor",
+              "DoB": "03/03/1666",
+              "Role": "Vampire Bard",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Yasmine",
+              "DoB": "07/07/1987",
+              "Role": "Snack Coordinator",
+              "Salary": "$36,000"
+            },
+            {
+              "Name": "Karl the Cruel",
+              "DoB": "02/22/1333",
+              "Role": "Vampire Torturer",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Linda the Librarian",
+              "DoB": "01/13/1440",
+              "Role": "Scroll Sorter",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Stan",
+              "DoB": "06/18/2000",
+              "Role": "Tech Support Familiar",
+              "Salary": "$45,000"
+            },
+            {
+              "Name": "Zelda the Zesty",
+              "DoB": "12/03/1500",
+              "Role": "Undead Party Planner",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Jerry",
+              "DoB": "02/10/1975",
+              "Role": "Human Coffee Guy",
+              "Salary": "$30/hr"
+            },
+            {
+              "Name": "Beatrice the Broody",
+              "DoB": "11/17/1313",
+              "Role": "Goth Icon",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Thaddeus",
+              "DoB": "04/24/1460",
+              "Role": "Crypt Keeper",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Henry the Hypnotic",
+              "DoB": "06/09/1560",
+              "Role": "Entrance Host",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Melvin the Mild",
+              "DoB": "01/12/1902",
+              "Role": "Disappointment Vampire",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Ophelia",
+              "DoB": "05/23/1688",
+              "Role": "Vampire Chanteuse",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Quinn the Quiet",
+              "DoB": "09/08/1550",
+              "Role": "Stealth Operations",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Igor",
+              "DoB": "10/31/1200",
+              "Role": "Obligatory Igor",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Chad",
+              "DoB": "04/04/2001",
+              "Role": "Bloodbag",
+              "Salary": "Unpaid Internship"
+            },
+            {
+              "Name": "Morticia",
+              "DoB": "01/21/1743",
+              "Role": "Dark Decor Consultant",
+              "Salary": "$0"
+            },
+            {
+              "Name": "Edgar",
+              "DoB": "03/16/1420",
+              "Role": "Vampire Haikuist",
+              "Salary": "$0"
+            }
+          ],
+      searchColumns: ['Name', 'Role'],      // optional
+      showRowNumbers: true,
+      enableCSVExport: true,
+      enableFilters: true,
+      pagination: {
+        itemsPerPage: 10
+      },
+      onRowCreated: (rowEl, rowData, i) =>
+      {
+          // e.g. highlight veterans
+          if (rowData.Role.includes('Vampire'))
+          {
+              rowEl.classList.add('font-semibold');
+          }
+      },
+      onCellCreated: (cellEl, value, rowData, rowIndex, colIndex) =>
+      {
+          // e.g. format salary
+          if (colIndex === 3)
+          {
+              return parseInt(value.replace(/[^0-9]/g, ''), 10).toLocaleString('en') + ' USD';
+          }
+      }
+  });
+
+  // mount into your DOM
+  table.mount(document.querySelector('.myTable'));
+
+  // later, you can search programmatically:
+  // table.search('Vampire', ['Role']);
+</script>
+
+<h1>Charts</h1>
+<h3>Line Chart Plot</h3>
+<div class="myLineChart"></div>
+<h3>Line Chart Plot</h3>
+<div class="myLineChart2"></div>
+<h3>Bar Chart Plot</h3>
+<div class="myBarChart"></div>
+<h3>Pie Chart Plot</h3>
+<div class="myPieChart"></div>
+<h3>Dot Plot Plot</h3>
+<div class="myDotPlotChart"></div>
+<h3>XY Plot</h3>
+<div class="myXYPlot"></div>
+<h3>Function Plot</h3>
+<div class="myFunctionPlot"></div>
+
+<script>
+
+  const myLineChart = new clsTailwindChart({
+    containerEl: document.querySelector('.myLineChart'),
+    chartType: 'line',
+    title: 'Line Chart',
+    subtitle: 'Subtitle',
+    showGrid: true,
+    showAxisLabels: true,
+    showTrendLine: true,
+    showTooltip: true,
+    series: [
+        {
+            label: 'Banana Growth',
+            color: 'orange',
+            data: [
+                { x: '2025-01-01', y: 5 },
+                { x: '2025-02-01', y: 10 },
+                { x: '2025-03-01', y: 8 }
+            ]
+        },
+        {
+            label: 'Apple Drop',
+            color: 'red',
+            data: [
+                { x: '2025-01-01', y: 3 },
+                { x: '2025-02-01', y: 6 },
+                { x: '2025-03-01', y: 2 }
+            ]
+        }
+    ]
+  });
+
+  const myLineChart2 = new clsTailwindChart({
+      containerEl: document.querySelector('.myLineChart2'),
+      chartType: 'line',
+      title: 'Line Chart',
+      subtitle: 'Subtitle',
+      showAxisLabels: true,
+      showGrid: true,
+      showLegend: true,
+      showTooltip: true,
+      series: [
+          {
+              label: 'Q1 Sales',
+              color: 'blue',
+              data: [
+                  { x: 'January', y: 120 },
+                  { x: 'February', y: 150 },
+                  { x: 'March', y: 180 }
+              ]
+          },
+          {
+              label: 'Q2 Sales',
+              color: 'orange',
+              data: [
+                  { x: 'January', y: 100 },
+                  { x: 'February', y: 140 },
+                  { x: 'March', y: 200 }
+              ]
+          }
+      ]
+  });
+
+  const myBarChart = new clsTailwindChart({
+    containerEl: document.querySelector('.myBarChart'),
+    chartType: 'bar',
+    title: 'Bar Chart',
+    subtitle: 'Subtitle',
+    showGrid: true,
+    showAxisLabels: true,
+    showTrendLine: true,
+    showTooltip: true,
+    series: [
+        {
+            label: 'Banana Growth',
+            color: 'orange',
+            data: [
+                { x: '2025-01-01', y: 5 },
+                { x: '2025-02-01', y: 10 },
+                { x: '2025-03-01', y: 8 }
+            ]
+        },
+        {
+            label: 'Apple Drop',
+            color: 'red',
+            data: [
+                { x: '2025-01-01', y: 3 },
+                { x: '2025-02-01', y: 6 },
+                { x: '2025-03-01', y: 2 }
+            ]
+        }
+    ]
+  });
+
+  const myPieChart = new clsTailwindChart({
+      containerEl: document.querySelector('.myPieChart'),
+      chartType: 'pie',
+      title: 'Pie Chart',
+      subtitle: 'Subtitle',
+      showTooltip: true,
+      series: [
+          {
+              label: 'Fruit Share',
+              data: [
+                  { label: 'Bananas', value: 30, color: 'gold' },
+                  { label: 'Apples', value: 20, color: 'red' },
+                  { label: 'Oranges', value: 50, color: 'orange' }
+              ]
+          }
+      ]
+  });
+
+  const myDotPlotChart = new clsTailwindChart({
+      containerEl: document.querySelector('.myDotPlotChart'),
+      chartType: 'dot',
+      title: 'Dot Plot Chart',
+      subtitle: 'Subtitle',
+      showAxisLabels: true,
+      showGrid: true,
+      showTooltip: true,
+      series: [
+          {
+              label: 'Sample A',
+              color: 'blue',
+              data: [
+                  { x: 1, y: 5 },
+                  { x: 2, y: 9 },
+                  { x: 3, y: 7 }
+              ]
+          },
+          {
+              label: 'Sample B',
+              color: 'green',
+              data: [
+                  { x: 1, y: 4 },
+                  { x: 2, y: 6 },
+                  { x: 3, y: 8 }
+              ]
+          }
+      ]
+  });
+
+  const myXYPlot = new clsTailwindChart({
+    containerEl: document.querySelector('.myXYPlot'),
+    chartType: 'xy',
+    title: 'XY Plot Chart',
+    subtitle: 'Subtitle',
+    showAxisLabels: true,
+    XYPlotLine: false,
+    showGrid: true,
+    showTooltip: true,
+    series: [
+      {
+        label: 'Experiment A',
+        color: 'blue',
+        data: [
+          { x: 0, y: 1 },
+          { x: 1, y: 3 },
+          { x: 2, y: 2 },
+          { x: 3, y: 5 }
+        ]
+      }
+    ]
+  });
+
+  const myFunctionPlot = new clsTailwindChart(
+  {
+      containerEl: document.querySelector('.myFunctionPlot'),
+      chartType: 'function',
+      title: 'Function Plot Chart',
+      subtitle: 'Subtitle',
+      showAxisLabels: true,
+      showGrid: true,
+      showTooltip: true,
+      minX: -20,
+      maxX: 20,
+      minY: -20,
+      maxY: 20,
+      series: [
+          {
+              label: 'Linear',
+              color: 'red',
+              equation: 'f(x) = 2*x + 1'
+          },
+          {
+              label: 'Quadratic',
+              color: 'blue',
+              equation: 'f(x) = x*x'
+          },
+          {
+              label: 'Inverse',
+              color: 'green',
+              equation: 'f(x) = 1/x'
+          }
+      ]
+  });
+</script>
+
+<h1>Cards</h1>
+<div class="mycard"></div>
+<div class="mycard2"></div>
+
+<script>
+  let card = new clsTailwindCard(
+  {
+    containerEl: document.querySelector('.mycard'),
+    classes: [],
+    imageUrl: '/content/img/photo.jpg',
+    imagePosition: 'top', //top side-left side-right
+    content: `
+        <h3 class="text-lg font-semibold">Image at the Top</h3>
+        <p>This card shows the image full-width at the top, then some content below.</p>
+      `
+  });
+
+  let card2 = new clsTailwindCard(
+  {
+    containerEl: document.querySelector('.mycard2'),
+    classes: [],
+    //imageUrl: '/content/img/photo.jpg',
+    imageUrl: '/content/img/profile-2.png',
+    imagePosition: 'side-left', //top side-left side-right
+    sideContent: `<p>This card shows the image full-width at the top, then some content below.</p>`,
+    content: `
+        <h3 class="text-lg font-semibold">Image at the Top</h3>
+        <p>This card shows the image full-width at the top, then some content below.</p>`
+  });
+</script>
+
+<!--
+<article
+  class="card inline-block overflow-hidden border border-gray-400 rounded-lg shadow-sm transition hover:shadow-lg dark:shadow-gray-700/25"
+>
+  <img
+    alt=""
+    src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+    class="h-56 w-full object-cover"
+  />
+
+  <div class="bg-white p-4 sm:p-6 dark:bg-gray-900">
+    <time datetime="2022-10-10" class="block text-xs text-gray-500 dark:text-gray-400">
+      10th Oct 2022
+    </time>
+
+    <a href="#">
+      <h3 class="mt-0.5 text-lg text-gray-900 dark:text-white">
+        How to position your furniture for positivity
+      </h3>
+    </a>
+
+    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae dolores, possimus
+      pariatur animi temporibus nesciunt praesentium dolore sed nulla ipsum eveniet corporis quidem,
+      mollitia itaque minus soluta, voluptates neque explicabo tempora nisi culpa eius atque
+      dignissimos. Molestias explicabo corporis voluptatem?
+    </p>
+  </div>
+</article>
+-->
+
+
+<h1>Alerts</h1>
+<div class="container">
+  <!-- <div class="myAlert"></div> -->
+  <button class="myAlertButtonCreateSuccess bg-success rounded p-2">New Success Alert</button>
+  <button class="myAlertButtonCreateWarning bg-warning rounded p-2">New Warning Alert</button>
+  <button class="myAlertButtonCreateError bg-error rounded p-2">New Error Alert</button>
+  <button class="myAlertButtonCreateInfo bg-info rounded p-2">New Info Alert</button>
+</div>
+<script>
+  document.querySelector('.myAlertButtonCreateSuccess').addEventListener('click', () =>
+  {
+    let myAlert = new clsTailwindAlert(
+    {
+      type: 'success',
+      title: 'Heads up!',
+      message: 'This is an alert options are success, warning, info, error.'
+    });
+  });
+  document.querySelector('.myAlertButtonCreateWarning').addEventListener('click', () =>
+  {
+    let myAlert = new clsTailwindAlert(
+    {
+      type: 'warning',
+      title: 'Heads up!',
+      message: 'This is an alert options are success, warning, info, error.'
+    });
+  });
+  document.querySelector('.myAlertButtonCreateError').addEventListener('click', () =>
+  {
+    let myAlert = new clsTailwindAlert(
+    {
+      type: 'error',
+      title: 'Heads up!',
+      message: 'This is an alert options are success, warning, info, error.'
+    });
+  });
+  document.querySelector('.myAlertButtonCreateInfo').addEventListener('click', () =>
+  {
+    let myAlert = new clsTailwindAlert(
+    {
+      type: 'info',
+      title: 'Heads up!',
+      message: 'This is an alert options are success, warning, info, error.'
+    });
+  });
+</script>
+
+<h1>Modals</h1>
+<div class="container">
+  <div class="myModal"></div>
+  <button class="myModalButtonCreateXs bg-blue-900 text-white rounded p-2">New xs Modal</button>
+  <button class="myModalButtonCreateSm bg-blue-900 text-white rounded p-2">New sm Modal</button>
+  <button class="myModalButtonCreateMd bg-blue-900 text-white rounded p-2">New md Modal</button>
+  <button class="myModalButtonCreateLg bg-blue-900 text-white rounded p-2">New lg Modal</button>
+  <button class="myModalButtonCreateXl bg-blue-900 text-white rounded p-2">New xl Modal</button>
+  <button class="myModalButtonCreateFS bg-blue-900 text-white rounded p-2">New Fullscreen Modal</button>
+</div>
+<script>
+  document.querySelector('.myModalButtonCreateXs').addEventListener('click', () =>
+  {
+    new clsTailwindModal(
+    {
+      // containerEl: document.querySelector('.myModal'),
+      title: 'Existing Modal',
+      body: `This is my modal`,
+      size: 'xs',
+      CloseButton: true,
+      ClickOffClosed: true,
+      CancelText: "Cancel",
+      DoneText: "Done",
+      CancelButton: true,
+      DoneButton: true,
+      onCancel: () => { /* custom logic */ },
+      onDone: () => { /* custom logic */ }
+    });
+  });
+  document.querySelector('.myModalButtonCreateSm').addEventListener('click', () =>
+  {
+    new clsTailwindModal(
+    {
+      // containerEl: document.querySelector('.myModal'),
+      title: 'Existing Modal',
+      body: `This is my modal`,
+      size: 'sm',
+      CloseButton: true,
+      ClickOffClosed: true,
+      CancelText: "Cancel",
+      DoneText: "Done",
+      CancelButton: true,
+      DoneButton: true,
+      onCancel: () => { /* custom logic */ },
+      onDone: () => { /* custom logic */ }
+    });
+  });
+  document.querySelector('.myModalButtonCreateMd').addEventListener('click', () =>
+  {
+    new clsTailwindModal(
+    {
+      // containerEl: document.querySelector('.myModal'),
+      title: 'Existing Modal',
+      body: `This is my modal`,
+      size: 'md',
+      CloseButton: true,
+      ClickOffClosed: true,
+      CancelText: "Cancel",
+      DoneText: "Done",
+      CancelButton: true,
+      DoneButton: true,
+      onCancel: () => { /* custom logic */ },
+      onDone: () => { /* custom logic */ }
+    });
+  });
+  document.querySelector('.myModalButtonCreateLg').addEventListener('click', () =>
+  {
+    new clsTailwindModal(
+    {
+      // containerEl: document.querySelector('.myModal'),
+      title: 'Existing Modal',
+      body: `This is my modal`,
+      size: 'lg',
+      CloseButton: true,
+      ClickOffClosed: true,
+      CancelText: "Cancel",
+      DoneText: "Done",
+      CancelButton: true,
+      DoneButton: true,
+      onCancel: () => { /* custom logic */ },
+      onDone: () => { /* custom logic */ }
+    });
+  });
+  document.querySelector('.myModalButtonCreateXl').addEventListener('click', () =>
+  {
+    new clsTailwindModal(
+    {
+      // containerEl: document.querySelector('.myModal'),
+      title: 'Existing Modal',
+      body: `This is my modal`,
+      size: 'xl',
+      CloseButton: true,
+      ClickOffClosed: true,
+      CancelText: "Cancel",
+      DoneText: "Done",
+      CancelButton: true,
+      DoneButton: true,
+      onCancel: () => { /* custom logic */ },
+      onDone: () => { /* custom logic */ }
+    });
+  });
+  document.querySelector('.myModalButtonCreateFS').addEventListener('click', () =>
+  {
+    new clsTailwindModal(
+    {
+      // containerEl: document.querySelector('.myModal'),
+      title: 'Existing Modal',
+      body: `This is my modal`,
+      size: 'fs',
+      CloseButton: true,
+      ClickOffClosed: true,
+      CancelText: "Cancel",
+      DoneText: "Done",
+      CancelButton: true,
+      DoneButton: true,
+      onCancel: () => { /* custom logic */ },
+      onDone: () => { /* custom logic */ }
+    });
+  });
+</script>
+
+<h1>Pagination</h1>
+<div class="myPagination"></div>
+<script>
+  const pagination = new clsTailwindPagination(
+  {
+    containerEl: document.querySelector('.myPagination'),
+    maxPages: 7,
+    totalRecords: 323,
+    itemsPerPage: 10,
+    currentPage: 1,
+    onPageChanged: (newPage) =>
+    {
+      console.log('Page changed to:', newPage);
+    }
+  });
+  // Later, update totalRecords or itemsPerPage:
+  // pagination.setTotalRecords(200);
+  // pagination.setNumberPerPage(20);
+  // pagination.setValue(3);  // programmatically go to page 3
+</script>
+
+<h1>Call to Action</h1>
+<div class="myCallToAction"></div>
+<script>
+  const cta = new clsTailwindCallToAction(
+  {
+    containerEl: document.querySelector('.myCallToAction'),
+    image: '/content/img/desk-alt.png',
+    title: 'Level up your workflow today',
+    body: '<p>Fast, reliable tools built for developers. <strong>Start for free.</strong></p>',
+    buttonText: 'Start Now',
+    //buttonHref: '/register',
+    buttonAction: () =>
+    {
+      console.log('CTA Action')
+    },
+    class: 'additional-wrapper-classes'
+  });
+</script>
+
+<h1>Banners</h1>
+<div class="myBanner"></div>
+<script>
+  const banner = new clsTailwindBanner(
+  {
+    containerEl: document.querySelector('.myBanner'),
+    image: '/content/img/desk.png',
+    imagePosition: 'left',    // 'background' | 'top' | 'left' | 'right'
+    title: 'Big Sale Starts Now!',
+    subtitle: 'Take advantage of 50% off everything. Limited time only.',
+    buttonText: 'Shop Now',
+    // Either:
+      // buttonAction: '/deals'      // URL string
+      // Or:
+      buttonAction: () => { console.log('Clicked!'); }
+    ,
+    //class: 'h-[30vh] sm:h-[40vh] lg:h-[60vh]'
+  });
+</script>
+
+<h1>Sections</h1>
+<!-- <section>
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8">
+      <div>
+        <div class="max-w-lg md:max-w-none">
+          <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </h2>
+
+          <p class="mt-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque saepe
+            architecto maiores repudiandae amet perferendis repellendus, reprehenderit voluptas
+            sequi.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1731690415686-e68f78e2b5bd?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="rounded"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-4 md:items-center md:gap-8">
+      <div class="md:col-span-1">
+        <div class="max-w-lg md:max-w-none">
+          <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </h2>
+
+          <p class="mt-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque saepe
+            architecto maiores repudiandae amet perferendis repellendus, reprehenderit voluptas
+            sequi.
+          </p>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <img
+          src="https://images.unsplash.com/photo-1731690415686-e68f78e2b5bd?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="rounded"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-4 md:items-center md:gap-8">
+      <div class="md:col-span-3">
+        <img
+          src="https://images.unsplash.com/photo-1731690415686-e68f78e2b5bd?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="rounded"
+          alt=""
+        />
+      </div>
+
+      <div class="md:col-span-1">
+        <div class="max-w-lg md:max-w-none">
+          <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </h2>
+
+          <p class="mt-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque saepe
+            architecto maiores repudiandae amet perferendis repellendus, reprehenderit voluptas
+            sequi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<h1>Expandos</h1>
+
+<div class="myAccordion"></div>
+<script>
+  const accordion = new clsTailwindAccordion(
+  {
+    collapseOthers: true,
+    containerEl: document.querySelector('.myAccordion'),
+    items: [
+      {
+        title: 'What is Lorem Ipsum?',
+        content: '<p>It is a long established fact that a reader will be distracted by the readable content.</p>',
+        open: true
+      },
+      {
+        title: 'Why do we use it?',
+        content: '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>'
+      },
+      {
+        title: 'Where can I get some?',
+        content: '<p>There are many variations of passages of Lorem Ipsum available.</p>'
+      }
+    ]
+  });
+
+  // After 3 seconds, add another item:
+  // setTimeout(() => {
+  //   accordion.addItem({
+  //     title: 'New Question?',
+  //     content: '<p>This was added dynamically after 3 seconds.</p>'
+  //   });
+  // }, 3000);
+
+  // After 6 seconds, clear all and repopulate:
+  // setTimeout(() => {
+  //   accordion.populate([
+  //     {
+  //       title: 'First Repopulated Item',
+  //       content: '<p>Content of first repopulated item.</p>',
+  //       open: false
+  //     },
+  //     {
+  //       title: 'Second Repopulated Item',
+  //       content: '<p>Content of second repopulated item.</p>',
+  //       open: true
+  //     }
+  //   ]);
+  // }, 6000);
+
+</script>
+
+<h1>Steps</h1>
+<div>
+  <h2 class="sr-only">Steps</h2>
+  <div class="mySteps"></div>
+
+  <script>
+    const stepsUi = new clsTailwindSteps({
+      containerEl: document.querySelector('.mySteps'),
+      classes: ['mb-6'],
+      steps: [
+        { id: 'details',  name: 'Details',  iconClass: 'kfi-checkbox-checked' },
+        { id: 'address',  name: 'Address',  iconClass: 'kfi-map' },
+        { id: 'payment',  name: 'Payment',  iconClass: 'kfi-payment' }
+      ],
+      currentStepId: 'address'
+    });
+
+    // Get current:
+    const current = stepsUi.getCurrentStep();
+ 
+    // Change current:
+    setTimeout(() =>
+    {
+      stepsUi.setCurrentStep('payment');
+    }, 2000)
+  </script>
+
+</div>
+
+<h1>Button Groups</h1>
+<div class="container">
+  <span
+    class="inline-flex divide-x divide-gray-300 overflow-hidden rounded border border-gray-300 bg-white shadow-sm dark:divide-gray-600 dark:border-gray-600 dark:bg-gray-800"
+  >
+    <button
+      type="button"
+      class="px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:relative dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white"
+      aria-label="Edit"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-4"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+        />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      class="px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:relative dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white"
+      aria-label="View"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-4"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+        />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+        />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      class="px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:relative dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white"
+      aria-label="Delete"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-4"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+        />
+      </svg>
+    </button>
+  </span>
+</div>
+
+<hr class="mt-4 mb-4">
+<div class="container">
+  <span
+    class="inline-flex divide-x divide-gray-300 overflow-hidden rounded border border-gray-300 bg-white shadow-sm dark:divide-gray-600 dark:border-gray-600 dark:bg-gray-800"
+  >
+    <button
+      type="button"
+      class="px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:relative dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white"
+    >
+      Edit
+    </button>
+
+    <button
+      type="button"
+      class="px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:relative dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white"
+    >
+      View
+    </button>
+
+    <button
+      type="button"
+      class="px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:relative dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white"
+    >
+      Delete
+    </button>
+  </span>
+</div>
+
+<h1>Badges</h1>
+<div class="container">
+  <span
+    class="inline-flex items-center justify-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700 dark:bg-emerald-700 dark:text-emerald-100"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="-ms-1 me-1.5 size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+
+    <p class="text-sm whitespace-nowrap">Paid</p>
+  </span>
+
+  <span
+    class="inline-flex items-center justify-center rounded-full border border-emerald-500 px-2.5 py-0.5 text-emerald-700 dark:text-emerald-100"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="-ms-1 me-1.5 size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+
+    <p class="text-sm whitespace-nowrap">Paid</p>
+  </span>
+
+  <span
+    class="inline-flex items-center justify-center rounded-full bg-amber-100 px-2.5 py-0.5 text-amber-700 dark:bg-amber-700 dark:text-amber-100"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="-ms-1 me-1.5 size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z"
+      />
+    </svg>
+
+    <p class="text-sm whitespace-nowrap">Refunded</p>
+  </span>
+
+  <span
+    class="inline-flex items-center justify-center rounded-full border border-amber-500 px-2.5 py-0.5 text-amber-700 dark:text-amber-100"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="-ms-1 me-1.5 size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z"
+      />
+    </svg>
+
+    <p class="text-sm whitespace-nowrap">Refunded</p>
+  </span>
+
+  <span
+    class="inline-flex items-center justify-center rounded-full bg-red-100 px-2.5 py-0.5 text-red-700 dark:bg-red-700 dark:text-red-100"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="-ms-1 me-1.5 size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+      />
+    </svg>
+
+    <p class="text-sm whitespace-nowrap">Failed</p>
+  </span>
+
+  <span
+    class="inline-flex items-center justify-center rounded-full border border-red-500 px-2.5 py-0.5 text-red-700 dark:text-red-100"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="-ms-1 me-1.5 size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+      />
+    </svg>
+
+    <p class="text-sm whitespace-nowrap">Failed</p>
+  </span>
+
+  <span
+    class="rounded-full bg-purple-100 px-2.5 py-0.5 text-sm whitespace-nowrap text-purple-700 dark:bg-purple-700 dark:text-purple-100"
+  >
+    Live
+  </span>
+
+  <span
+    class="rounded-full border border-purple-500 px-2.5 py-0.5 text-sm whitespace-nowrap text-purple-700 dark:text-purple-100"
+  >
+    Live
+  </span>
+</div>
+
+<h1>Alerts (hidden)</h1>
+<div
+  class="fixed hidden top-0 left-0 w-full flex items-center justify-between border-b border-gray-200 bg-gray-100 px-4 py-2 text-gray-900"
+>
+  <span> </span>
+
+  <p class="text-center font-medium">
+    Lorem, ipsum dolor
+    <a href="#" class="inline-block underline"> sit amet consectetur </a>
+  </p>
+
+  <button
+    type="button"
+    aria-label="Dismiss"
+    class="rounded border border-gray-300 bg-white p-1.5 shadow-sm transition-colors hover:bg-gray-50"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-5"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  </button>
+</div>
+
+<h1>Cart</h1>
+<div class="myCart"></div>
+<script>
+  const cart = new clsTailwindCart(
+  {
+      containerEl: document.querySelector('.myCart'),
+      items: [
+          {
+              image        : 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?...',
+              title        : 'Basic Tee 6-Pack',
+              details      : { Size: 'XXS', Color: 'White' },
+              quantity     : 1,
+              cost         : 24.00,
+              removeAction : () =>
+              {
+                  console.log('Removed Basic Tee 6-Pack');
+              }
+          },
+          {
+              image        : 'https://images.unsplash.com/photo-1599481238640-4c1288750d7a?...',
+              title        : 'Robot Toy',
+              details      : { Color: 'Silver' },
+              quantity     : 2,
+              cost         : 14.99,
+              removeAction : () =>
+              {
+                  console.log('Removed Robot Toy');
+              }
+          }
+          // …add more line items here
+      ],
+      //class         : 'my-cart-wrapper'  // optional extra wrapper classes
+  });
+</script>
+
+<h1>Product / Product Page</h1>
+<div class="myProduct"></div>
+<script>
+  let products = [
+    {
+      title: 'Fizruptor',
+      imageUrl: '/content/img/product.png',
+      description: '$5099.95',
+      badgeText  : 'New',
+    },
+    {
+      title: 'Fizruptor',
+      imageUrl: '/content/img/product-2.png',
+      description: '$5099.95',
+      badgeText  : 'New',
+    },
+    {
+      title: 'Fizruptor',
+      imageUrl: '/content/img/product-3.png',
+      description: '$5099.95',
+      badgeText  : 'New',
+    },
+    {
+      title: 'Fizruptor',
+      imageUrl: '/content/img/product-4.png',
+      description: '$5099.95',
+      badgeText  : 'New',
+    },
+    {
+      title: 'Fizruptor',
+      imageUrl: '/content/img/product-5.png',
+      description: '$5099.95',
+      badgeText  : 'New',
+    },
+    {
+      title: 'Fizruptor',
+      imageUrl: '/content/img/product-6.png',
+      description: '$5099.95',
+      badgeText  : 'New',
+    },
+    {
+      title: 'Fizruptor',
+      imageUrl: '/content/img/product-7.png',
+      description: '$5099.95',
+      badgeText  : 'New',
+    }
+  ];
+  products.forEach((product) =>
+  {
+    const p = new clsTailwindProduct(
+    {
+      title      : product.title,
+      imageUrl   : product.imageUrl,
+      description: product.description,
+      badgeText  : product.badgeText,
+      action     : () =>
+      {
+          console.log('Add to Cart clicked');
+      }
+    });
+    p.mount(document.querySelector('.myProduct'));
+  })
+  
+</script>
+
+<h1>Signup Options</h1>
+<div class="mySignupOptions"></div>
+<script>
+  const signup = new clsTailwindSignupOptions(
+  {
+    containerEl: document.querySelector('.mySignupOptions'),
+    plans: [
+      {
+        title: 'Starter',
+        image: '/content/img/profile-1.png',
+        description: 'Lorem ipsum dolor sit amet…',
+        price: '20$',
+        frequency: 'month',
+        buttonText: 'Get Started',
+        // buttonHref: '/start',
+        buttonAction: () => { console.log('action 1') },
+        features: {
+          '10 users': true,
+          '2GB of storage': true,
+          'Email support': true,
+          'Help center access': false,
+          'Phone support': false,
+          'Community access': false
+        }
+      },
+      {
+        title: 'Starter',
+        image: '/content/img/profile-2.png',
+        description: 'Lorem ipsum dolor sit amet…',
+        price: '20$',
+        frequency: 'month',
+        buttonText: 'Get Started',
+        // buttonHref: '/start',
+        buttonAction: () => { console.log('action 2') },
+        features: {
+          '10 users': true,
+          '2GB of storage': true,
+          'Email support': true,
+          'Help center access': false,
+          'Phone support': false,
+          'Community access': false
+        }
+      }
+      // …more plans
+    ],
+    //class: 'your-custom-classes'
+  });
+</script>
+
+<h1>Countdown</h1>
+<div class="myCountdown"></div>
+
+<script>
+  const myCountdown = new clsTailwindCountdown(
+    { 
+      flip: false,
+      containerEl: document.querySelector('.myCountdown'),
+      endDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString() 
+    });
+</script>
+
+<h1>Dock</h1>
+<div class="dock dock-sm">
+  <button>
+    <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><polyline points="1 11 12 2 23 11" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2"></polyline><path d="m5,13v7c0,1.105.895,2,2,2h10c1.105,0,2-.895,2-2v-7" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></path><line x1="12" y1="22" x2="12" y2="18" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></line></g></svg>
+  </button>
+  
+  <button class="dock-active">
+    <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><polyline points="3 14 9 14 9 17 15 17 15 14 21 14" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2"></polyline><rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></rect></g></svg>
+  </button>
+  
+  <button>
+    <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></circle><path d="m22,13.25v-2.5l-2.318-.966c-.167-.581-.395-1.135-.682-1.654l.954-2.318-1.768-1.768-2.318.954c-.518-.287-1.073-.515-1.654-.682l-.966-2.318h-2.5l-.966,2.318c-.581.167-1.135.395-1.654.682l-2.318-.954-1.768,1.768.954,2.318c-.287.518-.515,1.073-.682,1.654l-2.318.966v2.5l2.318.966c.167.581.395,1.135.682,1.654l-.954,2.318,1.768,1.768,2.318-.954c.518.287,1.073.515,1.654.682l.966,2.318h2.5l.966-2.318c.581-.167,1.135-.395,1.654-.682l2.318.954,1.768-1.768-.954-2.318c.287-.518.515-1.073.682-1.654l2.318-.966Z" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></path></g></svg>
+  </button>
+</div>
+
+<h1>Rating</h1>
+<div class="myRating"></div>
+<script>
+  let myRating = new clsTailwindRating({ containerEl: document.querySelector('.myRating'), initial: 3, onChange: (val) => {} });
+</script>

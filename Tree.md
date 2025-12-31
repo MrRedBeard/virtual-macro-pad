@@ -1,0 +1,165 @@
+# Directory Tree
+
+---
+
+_Base path: `/shared/repo/mrb/macro-pad`_
+
+```
+./
+404/
+  404-background.jpg
+  404-background.xcf
+  astro.png
+  astro.xcf
+clsColorTheory.md
+Commands.md
+configs/
+  macros.json
+  settings.json
+data/
+Development.md
+.gitignore
+LICENSE
+main.js
+package.json
+preload.js
+README.md
+Requirements.md
+resources/
+  icons/
+    128x128.png
+    16x16.png
+    256x256.png
+    32x32.png
+    512x512.png
+    64x64.png
+  logo.svg
+Roadmap.md
+scripts/
+  extractColors.js
+  icons.js
+  install.sh
+  seoHelper.js
+  tree.sh
+serve.js
+server_actions/
+  ConfigService.js
+  MacroEngine.js
+  PurposeService.js
+tailwind.config.js
+tailwindInput/
+  chart.html
+  classesInUse.html
+  colors.html
+  components.html
+  fixedHeader.html
+  grid.html
+  input.css
+  timeline.html
+  toggle.html
+UI_Components.md
+views/
+  layouts/
+    layout.ejs
+  pages/
+    404.ejs
+    colors.ejs
+    components.ejs
+    font-icons.ejs
+    forms.ejs
+    index.ejs
+    leaflet.ejs
+    typography.ejs
+  partials/
+    footer.ejs
+    head.ejs
+    header.ejs
+    main-end.ejs
+    main-start.ejs
+    sidebar.ejs
+www/
+  content/
+    css/
+      leaflet-bundle.css
+    fonts/
+      index.html
+      kfi.css
+      kfi.eot
+      kfi.js
+      kfi.less
+      kfi.module.less
+      kfi.scss
+      kfi.styl
+      kfi.svg
+      kfi.symbol.svg
+      kfi.ttf
+      kfi.woff
+      kfi.woff2
+      symbol.html
+      unicode.html
+    img/
+      404-background.jpg
+      apple-touch-icon.png
+      astro.png
+      desk-alt.png
+      desk.png
+      elevation-pushpin.svg
+      favicon-16x16.png
+      favicon-32x32.png
+      lab-alt-2.png
+      lab-alt.png
+      lab.png
+      layers-2x.png
+      layers.png
+      marker-icon-2x.png
+      marker-icon.png
+      marker-shadow.png
+      photo.jpg
+      product-2.png
+      product-3.png
+      product-4.png
+      product-5.png
+      product-6.png
+      product-7.png
+      product.png
+      profile-1.png
+      profile-2.png
+      site-logo.png
+    js/
+      clsBaseClass.js
+      clsLeafletBrainMap.js
+      clsMacroPad.js
+      clsTailwindAccordion.js
+      clsTailwindAlert.js
+      clsTailwindBanner.js
+      clsTailwindCallToAction.js
+      clsTailwindCard.js
+      clsTailwindCart.js
+      clsTailwindChart.js
+      clsTailwindCommon.js
+      clsTailwindComponent.js
+      clsTailwindContextMenu.js
+      clsTailwindCountdown.js
+      clsTailwindFishbone.js
+      clsTailwindLeafletDiagram.js
+      clsTailwindModal.js
+      clsTailwindPagination.js
+      clsTailwindProduct.js
+      clsTailwindRating.js
+      clsTailwindSignupOptions.js
+      clsTailwindSlider.js
+      clsTailwindSteps.js
+      clsTailwindTable.js
+      clsTailwindTimeline.js
+      clsTailwindToggle.js
+      clsTailwindTooltips.js
+      leaflet_bundle.iife.js
+      leaflet_bundle.iife.js.map
+    theme/
+      alpine.min.js
+      clsColorTheory.js
+      tailwind.css
+      theme-colors.js
+  favicon.ico
+  index.html
+```

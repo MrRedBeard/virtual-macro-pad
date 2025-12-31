@@ -1,0 +1,245 @@
+<button @click="dark = !dark" class="mt-4 px-4 py-2 bg-gray-700 text-white rounded">
+  Toggle Dark Mode
+</button>
+
+<h1 class="text-3xl font-bold">🎨 Color Palette</h1>
+
+<!-- BRAND COLORS -->
+<section>
+<h2 class="text-xl font-semibold mb-2">Brand Colors</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+  <div class="p-4 rounded text-white bg-primary">primary</div>
+  <div class="p-4 rounded bg-black text-white">black</div>
+  <div class="p-4 rounded bg-white border text-black">white</div>
+</div>
+</section>
+
+<!-- NEUTRALS -->
+<section>
+<h2 class="text-xl font-semibold mb-2">Neutrals (Gray & Slate)</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+  <div class="p-4 rounded bg-gray-100 text-gray-800">gray-100</div>
+  <div class="p-4 rounded bg-gray-300 text-gray-800">gray-300</div>
+  <div class="p-4 rounded bg-gray-500 text-white">gray-500</div>
+  <div class="p-4 rounded bg-gray-700 text-white">gray-700</div>
+  <div class="p-4 rounded bg-gray-900 text-white">gray-900</div>
+  <div class="p-4 rounded bg-slate-600 text-white">slate-600</div>
+</div>
+</section>
+
+<!-- SEMANTIC COLORS -->
+<section>
+<h2 class="text-xl font-semibold mb-2">Semantic Colors</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+  <div class="p-4 rounded bg-info text-white">info</div>
+  <div class="p-4 rounded bg-success text-white">success</div>
+  <div class="p-4 rounded bg-warning text-white">warning</div>
+  <div class="p-4 rounded bg-error text-white">error</div>
+</div>
+</section>
+
+<!-- SUPPORTING COLORS -->
+<section>
+<h2 class="text-xl font-semibold mb-2">Supporting Colors</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+  <div class="p-4 rounded bg-blue-500 text-white">blue-500</div>
+  <div class="p-4 rounded bg-zinc-500 text-white">zinc-500</div>
+  <div class="p-4 rounded bg-teal-500 text-white">teal-500</div>
+  <div class="p-4 rounded bg-amber-500 text-black">amber-500</div>
+  <div class="p-4 rounded bg-rose-500 text-white">rose-500</div>
+</div>
+</section>
+
+<hr>
+
+<h2 class="text-xl font-semibold mb-2">All Defined Colors</h2>
+
+<div class="allColors grid grid-cols-6 gap-4">
+</div>
+
+<h2 class="text-xl font-semibold mb-2">Palette Colors from clsColorTheory</h2>
+<!-- Paste into your HTML to preview -->
+<div class="paletteGrid grid grid-cols-6 gap-4">
+  <!-- JavaScript will inject <div class="h-10 w-10" style="background-color: #hex"> -->
+</div>
+
+<h2 class="text-xl font-semibold mb-2">Palette from Picture</h2>
+<div>
+   <input
+        type="file"
+        id="imageUpload"
+        accept="image/*"
+    />
+    <canvas
+        id="myCanvas"
+        width="800"
+        height="600"
+        style="border:1px solid #ccc;"
+    ></canvas>
+</div>
+<div class="canvasPaletteGrid grid grid-cols-6 gap-4">
+  <!-- JavaScript will inject <div class="h-10 w-10" style="background-color: #hex"> -->
+</div>
+
+<script>
+  let colorTheory = null;
+  window.addEventListener("load", (event) =>
+  {
+    const allColors = document.querySelector('.allColors');
+    Object.keys(themeColors).forEach((color) =>
+    {
+      let div = document.createElement('div');
+      div.classList.add('bg-'+color, 'h-10');
+      div.innerHTML = themeColors[color];
+      allColors.append(div);
+    });
+
+    colorTheory = new clsColorTheory(themeColors);
+    const palette = colorTheory.getColorPalette('#FF057B');
+
+    console.log(colorTheory.getColorEmotionProfile('#FF057B'));
+
+    document.querySelector('.paletteGrid').innerHTML = colorTheory.renderPaletteGrid([
+      palette.tetradic,
+      ...palette.primary,
+      ...palette.complementary,
+      ...palette.gradient,
+      ...palette.analogous,
+      ...palette.muted,
+      ...palette.monochromatic
+    ]);    
+  });
+
+  window.addEventListener('DOMContentLoaded', () =>
+  {
+    // Grab references to the <input> and <canvas> elements
+    const fileInput = document.getElementById('imageUpload');
+    const canvas    = document.getElementById('myCanvas');
+    const ctx       = canvas.getContext('2d');
+
+    // Listen for file selection
+    fileInput.addEventListener('change', (event) =>
+    {
+      const files = event.target.files;
+
+        if (files && files.length > 0)
+        {
+            const file = files[0];
+
+            // Only proceed if it's an image
+            if (file.type.startsWith('image/'))
+            {
+                const reader = new FileReader();
+
+                // When file is read as a Data URL, draw it
+                reader.addEventListener('load', function(e)
+                {
+                    const img = new Image();
+
+                    img.addEventListener('load', function()
+                    {
+                        // OPTIONAL: clear canvas before drawing
+                        ctx.clearRect(
+                            0,
+                            0,
+                            canvas.width,
+                            canvas.height
+                        );
+
+                        // Fit the image into the canvas (maintaining aspect ratio)
+                        const scale = Math.min(
+                            canvas.width  / img.width,
+                            canvas.height / img.height
+                        );
+
+                        const xOffset = (canvas.width  - img.width * scale)  / 2;
+                        const yOffset = (canvas.height - img.height * scale) / 2;
+
+                        ctx.drawImage(
+                            img,
+                            0,
+                            0,
+                            img.width,
+                            img.height,
+                            xOffset,
+                            yOffset,
+                            img.width * scale,
+                            img.height * scale
+                        );
+
+                        // Dispatch a custom event on the canvas to signal "photo changed"
+                        const evt = new Event('photoChanged');
+                        canvas.dispatchEvent(evt);
+                    });
+
+                    // Set the image source to the Data URL from FileReader
+                    img.src = e.target.result;
+                });
+
+                // Read the file as a data URL (base64-encoded image)
+                reader.readAsDataURL(file);
+            }
+            else
+            {
+                alert('Please select a valid image file.');
+            }
+        }
+    });
+     // Example of listening for the custom 'photoChanged' event:
+    canvas.addEventListener('photoChanged', () =>
+    {
+      //Get dominate colors
+      let topColors = colorTheory.extractCanvasColors(canvas, 12, 60);
+      //document.querySelector('.canvasPaletteGrid').innerHTML = colorTheory.renderPaletteGrid(topColors);
+
+      //Check dominate colors as palette
+      let ck = colorTheory.checkPalette(topColors);
+      ck = ck.filter(color => color.suggested === false);
+      
+      //Remove colors that do not fit the palette
+      const toRemoveSet = new Set(
+        ck.filter(color => color.suggested === false)
+          .map(color => color.hex)
+      );
+      topColors = topColors.filter(hex => !toRemoveSet.has(hex));
+
+      //Get additional colors to blend palette
+      let suggestions = colorTheory.getSuggestedAdditions(topColors);
+
+      document.querySelector('.canvasPaletteGrid').innerHTML = colorTheory.renderPaletteGrid([
+        ...topColors,
+        ...suggestions
+      ]);
+
+      let darkLight = colorTheory.isLightPalette([
+        ...topColors,
+        ...suggestions
+      ], 0.5, 'lab');
+      // 0.3, 'wcag');
+      // 0.5, 'lab');
+
+      let emotionalProfile = colorTheory.getEmotionProfiles([
+        ...topColors,
+        ...suggestions
+      ]);
+      console.log(emotionalProfile)
+
+      let newTheme = colorTheory.createThemeFromPalette([
+        ...topColors,
+        ...suggestions
+      ]);
+
+      console.log(newTheme)
+
+      let altBkg = colorTheory.getAlternateBackgrounds([
+        ...topColors,
+        ...suggestions
+      ]);
+
+      console.log(altBkg);
+
+
+    });
+  });
+  
+</script>

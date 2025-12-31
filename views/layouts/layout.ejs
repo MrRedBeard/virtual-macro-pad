@@ -1,0 +1,19 @@
+  <%- include('../partials/head') %>
+  <%- include('../partials/header') %>
+  <!-- pt-16 -->
+  <div class="flex flex-1 min-h-0 <%= staticHeader ? 'pt-16' : '' %>"> <!--Wrapper for sidebar start-->
+      
+    <% if (sidebar) { %>
+      <%- include('../partials/sidebar') %>
+    <% } %>
+
+    <%- include('../partials/main-start') %>
+
+    <%- body %>
+
+    <%- include('../partials/main-end') %>
+
+  </div>
+  <%- include('../partials/footer') %>
+  </body>
+</html>

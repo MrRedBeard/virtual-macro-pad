@@ -1,0 +1,98 @@
+<div class="fonts mb-10">
+  <span class="count"></span>
+
+  <label for="Search" class="md:w-1/4 md:max-w-1/4 mb-4">
+    <span class="text-sm font-medium text-gray-700 dark:text-gray-200"> Search </span>
+
+    <div class="relative">
+      <input
+        type="text"
+        id="Search"
+        class="mt-0.5 w-full rounded border border-gray-300 shadow-sm sm:text-sm dark:border-gray-600 dark:bg-gray-900 dark:text-white"
+      />
+
+      <span class="absolute inset-y-0 right-2 grid w-8 place-content-center">
+        <button
+          type="button"
+          aria-label="Submit"
+          class="rounded-full p-1.5 text-gray-700 transition-colors bg-transparent"
+        >
+          <i class="kfi-magnify-alt text-white text-icon-xs"></i>
+        </button>
+      </span>
+    </div>
+  </label>
+</div>
+
+<div class="fontGrid grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-4"></div>
+
+
+
+<script>
+  let fontsEl = document.querySelector('.fonts');
+  let fontGridEl = document.querySelector('.fontGrid');
+  let keys = Object.keys(kfi);
+
+  document.querySelector('.count').innerHTML = `${keys.length} total icons`;
+
+  keys.forEach((icon) => 
+  {
+      if(typeof kfi[icon] === 'function')
+      {
+        return;
+      }
+      let li = document.createElement('div');
+      li.classList.add('icon', 'h-50', 'w-40', 'mx-auto', 'border', 'text-center');
+
+      let i = document.createElement('i');
+      i.classList.add(icon, 'text-icon-xxl');
+      li.append(i);
+      li.setAttribute('value', icon);
+      let p = document.createElement('p');
+      p.classList.add('text-xs');
+      p.innerHTML = `${icon} <br /><br />`;
+      p.innerHTML += `<br /> &lt;i class="${icon}"&gt;&lt;/i&gt;`;
+      li.append(p);
+      let p2 = document.createElement('p');
+      p2.classList.add('text-xs');
+      p2.innerHTML = `&amp;${kfi[icon].htmlcode}`;
+      li.append(p2);
+
+      fontGridEl.append(li);        
+  });
+
+  let search = document.querySelector('#Search');
+  search.focus();
+  let searchFunc = () =>
+  {
+      let searchVal = search.value.toString().trim();
+
+      let iconsArr = fontGridEl.querySelectorAll('.icon');
+      iconsArr.forEach((icon) =>
+      {
+          let val = icon.getAttribute('value').trim();
+
+          if(!searchVal || searchVal === '' || searchVal.length <= 0)
+          {
+              icon.classList.remove('hidden');
+          }
+          else if(val.indexOf(searchVal) > -1)
+          {
+              icon.classList.remove('hidden');
+          }
+          else
+          {
+              icon.classList.add('hidden');
+          }
+      });
+  };
+  search.addEventListener('keyup', () =>
+  {
+    searchFunc();
+  });
+  document.querySelector('#Search').addEventListener('click', () =>
+  {
+    search.value = '';
+    searchFunc();
+  });
+</script>

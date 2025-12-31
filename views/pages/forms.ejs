@@ -1,0 +1,271 @@
+<div class="w-full place-items-end">
+    <div class="breakpoint-badge">
+        Display Size:
+    </div>
+</div>
+
+<button @click="dark = !dark" class="mt-4 mb-4 px-4 py-2 bg-gray-700 text-white rounded">
+    Toggle Dark Mode
+</button>
+
+<form>
+  <div class="gridBreak"></div>
+  <email data-label="Your Email"></email>
+
+  <name data-label="Full Name"></name>
+
+  <search data-label="Find Something"></search>
+
+  <week data-label="Week of the Year"></week>
+
+  <month data-label="Month of Choice"></month>
+
+  <password data-label="Secure Password"></password>
+
+  <phone data-label="Phone Number"></phone>
+
+  <color data-label="Favorite Color"></color>
+
+  <datetime data-label="Meeting Time"></datetime>
+
+  <time_input data-label="Appointment Time"></time_input>
+
+  <url data-label="Website URL"></url>
+
+  <date data-label="Trip Start"></date>
+
+  <file class="col-span-3" data-label="Upload File(s)"></file>
+
+  <text_area class="col-span-3"></text_area>
+
+  <edit class="col-span-3"></edit>
+
+  <slider></slider>
+  <slider
+    data-input-value="25"
+    data-label="Volume"
+    data-min="0"
+    data-max="100"
+    data-step="5"
+  ></slider>
+
+  <div class="gridBreak"></div>
+
+  <toggle data-input-value="true" data-label-position="top" data-icon-on="kfi-check" data-icon-on-class="success" data-icon-off="kfi-close" data-icon-off-class="error" data-label="Accept Terms"></toggle>
+  <toggle data-input-value="false" data-label-position="top" data-icon-on="kfi-check" data-icon-on-class="success" data-icon-off="kfi-close" data-icon-off-class="error" data-label="Accept Terms"></toggle>
+
+  <toggle data-input-value="false" data-label-position="top" data-label="Accept Terms"></toggle>
+</form>
+
+
+<form>
+  <!-- Checkboxes -->
+  <fieldset class="form-group">
+    <legend class="sr-only">Checkboxes</legend>
+    <div class="space-y-3">
+      <label for="Option1" class="flex items-start gap-3">
+        <input id="Option1" type="checkbox" class="form-checkbox" />
+        <div>
+          <span class="form-label">Option 1</span>
+          <p class="text-sm text-gray-700 dark:text-gray-200">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, distinctio.
+          </p>
+        </div>
+      </label>
+      <label for="Option2" class="flex items-start gap-3">
+        <input id="Option2" type="checkbox" class="form-checkbox" />
+        <div>
+          <span class="form-label">Option 2</span>
+          <p class="text-sm text-gray-700 dark:text-gray-200">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, distinctio.
+          </p>
+        </div>
+      </label>
+      <label for="Option3" class="flex items-start gap-3">
+        <input id="Option3" type="checkbox" class="form-checkbox" />
+        <div>
+          <span class="form-label">Option 3</span>
+          <p class="text-sm text-gray-700 dark:text-gray-200">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, distinctio.
+          </p>
+        </div>
+      </label>
+    </div>
+  </fieldset>    
+</form>
+
+
+<form>
+  <div class="gridBreak"></div>
+
+  <!-- Datalist Headliner -->
+  <div class="form-group">
+    <label for="headline" class="form-label">Headliner</label>
+    <div class="relative">
+      <input
+        id="headline"
+        type="text"
+        list="HeadlineList"
+        placeholder="Please select"
+        aria-label="Headliner selector"
+        class="form-control pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0"
+      />
+      <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 dark:text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </span>
+      <datalist id="HeadlineList">
+        <option value="JM">John Mayer</option>
+        <option value="SRV">Stevie Ray Vaughn</option>
+        <option value="JH">Jimi Hendrix</option>
+        <option value="BBK">B.B King</option>
+        <option value="AK">Albert King</option>
+        <option value="BG">Buddy Guy</option>
+        <option value="EC">Eric Clapton</option>
+      </datalist>
+    </div>
+  </div>
+
+  <!-- Select Headliner -->
+  <div class="form-group">
+    <label class="form-label">Headliner</label>
+    <select class="form-control" placeholder="Headliner Selector">
+      <option value="">Please select</option>
+      <option value="JM">John Mayer</option>
+      <option value="SRV">Stevie Ray Vaughn</option>
+      <option value="JH">Jimi Hendrix</option>
+      <option value="BBK">B.B King</option>
+      <option value="AK">Albert King</option>
+      <option value="BG">Buddy Guy</option>
+      <option value="EC">Eric Clapton</option>
+    </select>
+  </div>
+
+  <!-- Simple checkbox -->
+  <fieldset class="form-group">
+    <legend class="sr-only">Accept Conditions</legend>
+    <label class="inline-flex items-center gap-3">
+      <input type="checkbox" id="accept" class="form-switch-input peer" />
+      <span class="form-switch peer-checked:bg-success">
+        <span class="form-switch-thumb"></span>
+      </span>
+      <span class="form-label">Accept Conditions</span>
+    </label>
+  </fieldset>
+
+  <!-- Delivery options -->
+  <fieldset class="form-group check-block space-y-2">
+    <legend class="sr-only">Delivery</legend>
+
+    <label class="form-control">
+      <div>
+        <p class="">Standard</p>
+        <p class="">$4.99</p>
+      </div>
+      <input
+        type="radio"
+        name="deliveryOption"
+        class="form-radio peer"
+        checked
+      />
+    </label>
+
+    <label class="form-control">
+      <div>
+        <p class="">Next Day</p>
+        <p class="">$9.99</p>
+      </div>
+      <input type="radio" name="deliveryOption" id="deliveryPriority" class="form-radio peer" />
+    </label>
+
+    <label class="form-control">
+      <div>
+        <p class="">Whenever</p>
+        <p class="">Free</p>
+      </div>
+      <input type="radio" name="deliveryOption" id="deliveryPriority" class="form-radio peer" />
+    </label>
+  </fieldset>
+</form>
+
+<form>
+  <div class="gridBreak"></div>
+
+    <div class="form-group">
+      <fieldset class="p-2 flex space-x-4 justify-center">
+          <legend class="sr-only">Color</legend>
+
+          <!-- Black -->
+          <label class="cursor-pointer">
+              <input
+              type="radio"
+              name="ColorOption"
+              id="ColorBlack"
+              class="sr-only peer"
+              checked
+              />
+              <span
+              class="block w-8 h-8 rounded-full bg-black shadow-sm
+                      peer-checked:ring-2 peer-checked:ring-black
+                      peer-checked:ring-offset-2 peer-checked:ring-offset-gray-300"
+              aria-label="Color option black"
+              ></span>
+              <span class="sr-only">Black</span>
+          </label>
+
+          <!-- Red -->
+          <label class="cursor-pointer">
+              <input
+              type="radio"
+              name="ColorOption"
+              id="ColorRed"
+              class="sr-only peer"
+              />
+              <span
+              class="block w-8 h-8 rounded-full bg-red-500 shadow-sm
+                      peer-checked:ring-2 peer-checked:ring-red-500
+                      peer-checked:ring-offset-2 peer-checked:ring-offset-gray-300"
+              aria-label="Color option red"
+              ></span>
+              <span class="sr-only">Red</span>
+          </label>
+
+          <!-- Blue -->
+          <label class="cursor-pointer">
+              <input
+              type="radio"
+              name="ColorOption"
+              id="ColorBlue"
+              class="sr-only peer"
+              />
+              <span
+              class="block w-8 h-8 rounded-full bg-blue-500 shadow-sm
+                      peer-checked:ring-2 peer-checked:ring-blue-500
+                      peer-checked:ring-offset-2 peer-checked:ring-offset-gray-300"
+              aria-label="Color option blue"
+              ></span>
+              <span class="sr-only">Blue</span>
+          </label>
+
+          <!-- Gold -->
+          <label class="cursor-pointer">
+              <input
+              type="radio"
+              name="ColorOption"
+              id="ColorGold"
+              class="sr-only peer"
+              />
+              <span
+              class="block w-8 h-8 rounded-full bg-amber-500 shadow-sm
+                      peer-checked:ring-2 peer-checked:ring-amber-500
+                      peer-checked:ring-offset-2 peer-checked:ring-offset-gray-300"
+              aria-label="Color option gold"
+              ></span>
+              <span class="sr-only">Gold</span>
+          </label>
+      </fieldset>
+    </div>
+    
+    
+</form>

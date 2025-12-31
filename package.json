@@ -1,0 +1,74 @@
+{
+  "name": "virtual-macropad",
+  "version": "0.1.1",
+  "description": "Virtual MacroPad for Debian - developed for use with x11 i3 lightdm lxqt-panel on an aging tablet - not wayland",
+  "main": "main.js",
+  "homepage": "http://git.lan/mrb/macro-pad",
+  "author":
+  {
+    "name": "MrRedBeard",
+    "email": "Britton.Scritchfield@gmail.com"
+  },
+  "build": {
+    "appId": "com.virtual-macropad.app",
+    "productName": "Virtual Macropad",
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Utility",
+      "icon": "resources/icons",
+      "desktop": {
+        "entry": {
+          "StartupWMClass": "virtual-macropad"
+        }
+      }
+    },
+    "deb": {
+      "maintainer": "MrRedBeard <britton.scritchfield@gmail.com>",
+      "depends": []
+    },
+    "appImage":
+    {
+      "artifactName": "${productName}-${version}-${arch}.AppImage"
+    }
+  },
+  "scripts": {
+    "serve": "node main.js",
+    "build-tailwind": "npm run build:css && npm run colors && npm run icons",
+    "watch:css": "npx tailwindcss -i ./tailwindInput/input.css -o ./www/content/theme/tailwind.css -c tailwind.config.js --watch",
+    "build:css": "npx tailwindcss -i ./tailwindInput/input.css -o ./www/content/theme/tailwind.css -c tailwind.config.js",
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder --dir",
+    "package:deb": "electron-builder --linux deb",
+    "colors": "node ./scripts/extractColors.js",
+    "icons": "node ./scripts/icons.js resources/logo.svg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.lan/mrb/macro-pad.git"
+  },
+  "bugs":
+  {
+    "url": "http://git.lan/mrb/macro-pad/issues"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "@mrredbeard/robotjs": "github:MrRedBeard/robotjs#v0.6.21",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-ejs-layouts": "^2.5.1",
+    "npx": "^10.2.2",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12",
+    "electron-rebuild": "^3.2.9",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.2",
+    "tailwindcss": "^3.4.1"
+  }
+}

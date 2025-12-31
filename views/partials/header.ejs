@@ -1,0 +1,169 @@
+    <!--fixed top-0 left-0 right-0 z-50 -->
+    <header class="max-w-full w-full bg-gray-900 text-white p-4 shadow border-b border-b-4 border-primary <%= staticHeader ? 'fixed z-50' : '' %>">
+    <% if (logoAboveNav) { %>
+        <div class="max-w-full w-full mt-2">
+            <a href="/">
+                <img src="/content/img/site-logo.png" alt="Site Logo" class="h-24 w-auto <%= logoAboveNavCenter ? 'mx-auto' : '' %>" />
+            </a>
+        </div>
+    <% } %>
+    <div class="max-w-full w-full flex items-center justify-between">
+        <div class="flex-1">
+            <% if (!logoAboveNav) { %>
+            <a href="/">
+                <h1 class="text-xl font-bold text-left flex items-center space-x-4">
+                    <img src="/content/img/site-logo.png" alt="Site Logo" class="h-8 w-auto" />
+                    <span><%= siteTitle || "Untitled" %></span>
+                </h1>
+            </a>
+            <% } %>
+        </div>
+        <!-- Top Menu -->
+        <div class="flex items-center space-x-4" x-data="{ topMenuOpen: false, dropdownOpen: null }">
+            <nav class="hidden md:flex space-x-4 items-center">
+            <!-- Desktop nav (md+) -->
+                <template x-for="item in navItems" :key="item.name">
+                    <div class="relative"
+                    @mouseenter="dropdownOpen = item.name"
+                    @mouseleave="dropdownOpen = null"
+                    @click.outside="dropdownOpen = null"
+                    @keydown.escape.window="dropdownOpen = null"
+                    @focusin="dropdownOpen = item.name">
+                    <!-- Simple item -->
+                        <template x-if="!item.children">
+                            <a
+                                :href="item.href"
+                                class="text-gray-300 hover:text-white px-2"
+                                x-text="item.name"
+                            ></a>
+                        </template>
+
+                        <!-- Dropdown item -->
+                        <template x-if="item.children">
+                            <div>
+                                <template x-if="item.href">
+                                    <a
+                                        :href="item.href"
+                                        class="text-gray-300 hover:text-white"
+                                        x-text="item.name"
+                                    ></a>
+                                </template>
+                                <!-- Dropdown toggle icon -->
+                                <button
+                                    type="button"
+                                    class="text-gray-300 hover:text-white focus:outline-none"
+                                    @click="dropdownOpen === item.name ? dropdownOpen = null : dropdownOpen = item.name"
+                                    :aria-expanded="dropdownOpen === item.name"
+                                >
+                                    <template x-if="!item.href">
+                                        <span x-text="item.name"></span>
+                                    </template>
+                                    <i class="kfi-arrow-carrot-1-down text-icon-xs"></i>
+                                </button>
+                                
+                                <div
+                                x-show="dropdownOpen === item.name"
+                                x-transition
+                                x-cloak
+                                class="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-md shadow-lg z-50"
+                                >
+                                    <template x-for="(sub, index) in item.children" :key="sub.name">
+                                        <a
+                                            :href="sub.href"
+                                            class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700 focus:bg-gray-700"
+                                            x-text="sub.name"
+                                            tabindex="0"
+                                            @keydown.arrow-down.prevent="focusNextItem(index, $el.closest('.z-50'))"
+                                            @keydown.arrow-up.prevent="focusPrevItem(index, $el.closest('.z-50'))"
+                                            @keydown.escape.stop="dropdownOpen = null"
+                                        ></a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </nav>
+
+            <!-- Mobile nav toggle (hamburger) -->
+            <div class="md:hidden relative">
+                <button
+                @click="topMenuOpen = !topMenuOpen"
+                class="text-gray-300 hover:text-white focus:outline-none"
+                aria-label="Toggle top menu">
+                    <i class="kfi-hamburger text-icon-lg"></i>
+                </button>
+
+                <!-- Mobile dropdown -->
+                <div
+                x-show="topMenuOpen"
+                x-transition
+                x-cloak
+                @keydown.escape.window="topMenuOpen = false"
+                @click.outside="topMenuOpen = false"
+                class="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-md shadow-lg z-50"
+                >
+                    <template x-for="item in navItems" :key="item.name">
+                        <div>
+                            <template x-if="!item.children">
+                                <template x-if="item.href">
+                                    <a
+                                        :href="item.href"
+                                        class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700"
+                                        x-text="item.name"
+                                        @click="topMenuOpen = false"
+                                    ></a>
+                                </template>
+                                <template x-if="!item.href">
+                                    <span
+                                        class="block px-4 py-2 text-sm text-gray-400"
+                                        x-text="item.name"
+                                    ></span>
+                                </template>
+                            </template>
+
+                            <!-- Dropdown item -->
+                            <template x-if="item.children">
+                                <div>
+                                    <!-- Optional: link if parent has href -->
+                                    <template x-if="item.href">
+                                        <a
+                                            :href="item.href"
+                                            class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700"
+                                            x-text="item.name"
+                                            @click="topMenuOpen = false"
+                                        ></a>
+                                    </template>
+                                    <template x-if="!item.href">
+                                        <span
+                                            class="block px-4 py-2 text-sm text-gray-400"
+                                            x-text="item.name"
+                                        ></span>
+                                    </template>
+
+                                    <!-- Sub-menu items -->
+                                    <template x-for="sub in item.children" :key="sub.name">
+                                        <a
+                                            :href="sub.href"
+                                            class="block pl-6 pr-4 py-2 text-sm text-gray-200 hover:bg-gray-700"
+                                            x-text="sub.name"
+                                            @click="topMenuOpen = false"
+                                        ></a>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Overlay when sidebar is open on mobile -->
+<div
+    class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+    x-show="sidebarOpen"
+    x-transition
+    @click="sidebarOpen = false"
+    x-cloak
+></div>

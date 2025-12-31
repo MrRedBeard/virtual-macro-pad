@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kitchen JS Font Icons</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+   
+  <meta name="description" content="Converts SVG fonts to TTF/EOT/WOFF/WOFF2/SVG format.">
+   
+  <meta name="keywords" content="svgtofont,TTF,EOT,WOFF,WOFF2,SVG">
+  
+  
+  
+  <link rel="stylesheet" href="kfi.css" />
+  
+  <style>
+    .icons ul li.class-icon [class^="kfi-"]{ font-size: 26px; }
+
+    html, body
+    {
+        line-height: 100%;
+        height: 100%;
+        margin: 0;
+        padding: .5rem;
+    }
+    .hidden
+    {
+        display: none;
+    }
+    .fonts 
+    {
+        margin: 0;
+        padding: 0;
+        justify-content: space-between;
+    }
+    .fonts .search
+    {
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+    .fonts .search label
+    {
+        color: #878787;
+    }
+    .fonts .search input
+    {
+        height: 1.5rem;
+        padding: .1rem;
+        padding-left: .2rem;
+        padding-right: .2rem;
+        border-radius: 3%;
+        border: 1px solid #878787;
+    }
+    .fonts .search button
+    {
+        cursor: pointer;
+        border: 1px solid #878787;
+        height: 1.5rem;
+        font-weight: bold;
+    }
+    .fonts ul
+    {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .fonts ul li
+    {
+        margin: 0;
+        padding: .5rem;
+        text-align: center;
+        border: 1px solid #878787;
+        width: 10rem;
+    }
+    .fonts ul li i
+    {
+        display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Kitchen JS Font Icons<sup>2.0.9</sup></h1>
+    <div class="info">
+      SVG produced Font Based Icon Set
+
+      <br /><br />
+      <span class="count"></span>
+    </div>
+    <p>
+      
+      <a href="https://github.com/Kitchen-JS/KitchenJSFontIcons">Kitchen JS Font Icons on GitHub</a>
+      
+    </p>
+    <p>
+        Generated with <a href="https://github.com/Kitchen-JS/svgtofont">https://github.com/Kitchen-JS/svgtofont</a><br />
+        Based on <a href="https://github.com/jaywcjlove/svgtofont">https://github.com/jaywcjlove/svgtofont</a>
+    </p>
+  </div>
+
+  <div class="fonts">
+    <div class="search">
+        <label>Search Icons: </label>
+        <input type="text" placeholder="Search Icons...">
+        <button>X</button>
+    </div>
+    <ul>
+    </ul>
+  </div>
+</body>
+<script src="kfi.js"></script>
+<script>
+  let fontsEl = document.querySelector('.fonts');
+  let keys = Object.keys(kfi);
+
+  // Number of icons
+  document.querySelector('.count').innerHTML = `${keys.length} total icons`;
+
+  // List icons stored in pfi.js
+  keys.forEach((icon) => 
+  {
+      if(typeof kfi[icon] === 'function')
+      {
+        return;
+      }
+      let li = document.createElement('li');
+      let i = document.createElement('i');
+      i.classList.add(icon);
+      li.append(i);
+      li.setAttribute('value', icon);
+      let p = document.createElement('p');
+      p.innerHTML = `${icon} <br /><br />`;
+      p.innerHTML += `<br /> &lt;i class="${icon}"&gt;&lt;/i&gt;`;
+      li.append(p);
+      let p2 = document.createElement('p');
+      p2.innerHTML = `&amp;${kfi[icon].htmlcode}`;
+      li.append(p2);
+      fontsEl.querySelector('ul').append(li);        
+  });
+
+  // Search icons
+  let search = document.querySelector('.search input');
+  search.focus();
+  let searchFunc = () =>
+  {
+      let searchVal = search.value.toString().trim();
+
+      let iconsArr = fontsEl.querySelectorAll('ul li');
+      iconsArr.forEach((icon) =>
+      {
+          let val = icon.getAttribute('value').trim();
+
+          if(!searchVal || searchVal === '' || searchVal.length <= 0)
+          {
+              icon.classList.remove('hidden');
+          }
+          else if(val.indexOf(searchVal) > -1)
+          {
+              icon.classList.remove('hidden');
+          }
+          else
+          {
+              icon.classList.add('hidden');
+          }
+      });
+  };
+  search.addEventListener('keyup', () =>
+  {
+      searchFunc();
+  });
+  document.querySelector('.search button').addEventListener('click', () =>
+  {
+      search.value = '';
+      searchFunc();
+  });
+</script>
+</html>

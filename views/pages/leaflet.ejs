@@ -1,0 +1,109 @@
+ <!-- <div id="map" class="h-3/4 w-full"></div> -->
+   <div id="map" class="w-1/2 h-3/4 mx-auto"></div>
+
+   
+
+  
+
+ <script>
+    (() =>
+    {
+        //var map = L.map('map').setView([34.99784454433927, -91.98272109031679], 13);
+
+        var map = L.map('map', {
+        center: [34.99784454433927, -91.98272109031679],
+        zoom: 13,
+        contextmenu: true,
+        contextmenuItems: [
+            {
+            text: 'Show Coordinates',
+            callback: function (e) {
+                alert('Latitude: ' + e.latlng.lat + '\nLongitude: ' + e.latlng.lng);
+            }
+            },
+            '-',
+            {
+            text: 'Zoom in',
+            callback: function () {
+                map.zoomIn();
+            }
+            }
+        ]
+        });
+
+        map.pm.addControls({
+            position: 'topleft',
+            drawCircle: true,
+            drawMarker: true,
+            drawPolygon: true,
+            editMode: true,
+            dragMode: true,
+            cutPolygon: true,
+        });
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 17,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        //console.log('L.tileLayer:', Object.keys(L.tileLayer));
+
+        // Tile Caching
+        const tileLayer = L.tileLayer.pouchDBCached(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                pouchDbName: 'osm-cache',
+                useOnlyCache: false,
+                saveToCache: true,
+                useCache: true,
+                crossOrigin: true
+            }
+        );
+        tileLayer.addTo(map);
+
+        tileLayer.on('tilecachehit', function (e)
+        {
+        console.log('[cache hit]', e.tile.src);
+        });
+
+        tileLayer.on('tilecachemiss', function (e)
+        {
+        console.log('[cache miss]', e.tile.src);
+        });
+
+        tileLayer.on('tilecacheready', function ()
+        {
+        console.log('[cache ready] All tile caching systems are go!');
+        });
+
+        var marker = L.marker([34.99722053861641, -91.97359085083009]).addTo(map);
+
+        var m_icon = L.icon({
+            iconUrl: '/content/img/marker-icon.png',
+            shadowUrl: '/content/img/marker-shadow.png'
+        });
+
+        L.marker([34.99784454433927, -91.98272109031679], {icon: m_icon}).addTo(map);   
+
+        map.on('click', (e) =>
+        {
+            console.log(e.latlng);
+
+
+            const allLayers = [];
+
+            for (const id in map._layers)
+            {
+            if (map._layers.hasOwnProperty(id))
+            {
+                const layer = map._layers[id];
+                allLayers.push(layer);
+            }
+            }
+
+            console.log(allLayers);
+        });
+
+    })();
+    
+ </script>

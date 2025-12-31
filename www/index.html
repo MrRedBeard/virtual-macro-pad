@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="bg-transparent">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+    /> -->
+    
+    <title>Virtual Macropad</title>
+    
+    <!-- Favicon (ICO fallback for legacy browsers) -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Modern PNG favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/content/img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/content/img/favicon-16x16.png" />
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/content/img/apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="/content/fonts/kfi.css" />
+    <script src="/content/fonts/kfi.js"></script>
+
+    <link rel="stylesheet" href="/content/theme/tailwind.css">
+    <script defer src="/content/theme/alpine.min.js"></script>
+    <script defer src="/content/theme/theme-colors.js"></script>
+    <script defer src="/content/theme/clsColorTheory.js"></script>
+
+    <script src="/content/js/clsMacroPad.js" defer></script>
+
+</head>
+<body class="flex flex-col min-h-screen max-h-screen overflow-hidden bg-transparent">
+    <header class="pt-1 px-1 max-w-full w-full">
+        <h1 class="font-bold max-h-4 grid grid-flow-col items-center m-0 p-0 mb-1 gap-x-2">
+            <img class="logo col-span-1 text-start self-start h-4 w-auto" src="/content/img/site-logo.png" alt="Site Logo" />
+            <span class="col-span-3 text-center text-logo text-xs">Virtual Macropad</span>
+            <i class="refresh-macros col-span-1 text-end kfi-refresh-chunky text-icon-sm text-logo m-0 p-0 cursor-pointer"></i>
+            <i class="close-macros col-span-1 text-end kfi-close text-icon-xs text-logo m-0 p-0 cursor-pointer"></i>
+        </h1>
+    </header>
+    <section class="w-full max-w-full h-10 bg-logo p-0.5 pb-10 m-0 grid grid-cols-5 gap-x-1 border-t-2 border-t-black">
+        <div class="col-span-4 h-full bg-logo border-2 border-black m-0 p-0 text-center content-evenly">
+            <span class="purpose font-semibold text-sm">Label</span>
+        </div>
+        <div class="col-span-1 m-0 p-0 mr-0.5 bg-black">
+            <div class="flex flex-col w-full text-center content-baseline pt-0.5 pb-0.5">
+                <i class="purpose-up kfi-arrow-up-chunky text-logo cursor-pointer"></i>
+                <span class="h-0.5 w-full"></span>
+                <i class="purpose-down kfi-arrow-down-chunky text-logo cursor-pointer"></i>
+            </div>
+        </div>
+    </section>
+    <main id="main-content" class="flex-1 m-0 p-0 max-h-full overflow-y-scroll no-scrollbar border-t-2 border-t-black">
+        <!-- space-x-0 space-y-0 -->
+        <div class="macro-buttons">
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+            <button class="macro-button">Foo</button>
+        </div>
+    </main>
+    
+    <script>
+        const buttonsGridEl = document.querySelector('.macro-buttons');
+    </script>
+</body>
+</html>

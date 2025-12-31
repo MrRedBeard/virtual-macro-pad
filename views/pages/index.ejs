@@ -1,0 +1,98 @@
+<section>
+  
+</section>
+
+<h3>Useful Links</h3>
+<ul class="publicLinks"></ul>
+
+<h3>iOT</h3>
+<ul class="iotLinks"></ul>
+
+<h3>Admin</h3>
+<ul class="adminLinks"></ul>
+
+<div class="w-full text-right">
+  <button class="refresh cursor-pointer" aria-label="Refresh"><i class="kfi-refresh-chunky text-icon-xxl"></i></button>
+</div>
+
+<script>
+async function loadDomains()
+{
+  const publicLinks = document.querySelector('.publicLinks');
+  publicLinks.innerHTML = '<li>Loading…</li>';
+
+  const iotLinks = document.querySelector('.iotLinks');
+  iotLinks.innerHTML = '<li>Loading…</li>';
+
+  const adminLinks = document.querySelector('.adminLinks');
+  adminLinks.innerHTML = '<li>Loading…</li>';
+
+  try
+  {
+    const res = await fetch('/api/domains/public',
+    {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+
+    const { domains } = await res.json();
+
+    if (!domains.length)
+    {
+      publicLinks.innerHTML = '<li>No public domains found</li>';
+      adminLinks.innerHTML = '<li>No public domains found</li>';
+      iotLinks.innerHTML = '<li>No public domains found</li>';
+      return;
+    }
+
+    const adminDomains = domains.filter(d => d.admin === 1);
+    const iotDomains   = domains.filter(d => d.iot === 1);
+    const publicDomains = domains.filter(d => d.public === 1 && d.admin !== 1 && d.iot !== 1);
+
+    if (!adminDomains.length)
+    {
+      adminLinks.innerHTML = '<li>No admin domains found</li>';
+      return;
+    }
+
+    if (!publicDomains.length)
+    {
+      publicLinks.innerHTML = '<li>No useful links domains found</li>';
+      return;
+    }
+
+    if (!iotDomains.length)
+    {
+      iotLinks.innerHTML = '<li>No iot domains found</li>';
+      return;
+    }
+
+    const makeLink = (d) =>
+      `<li><a target="_blank" href="${d.scheme}://${d.domain}" aria-label="${d.ip_address ? ` or ${d.scheme}://${d.ip_address}${d.port ? `:${d.port}` : ''}` : ''}">
+        ${d.description || 'No description'}
+        ${d.scheme}://${d.domain}
+      </a></li>`;
+
+    adminLinks.innerHTML  = adminDomains.map(makeLink).join('');
+    iotLinks.innerHTML    = iotDomains.map(makeLink).join('');
+    publicLinks.innerHTML = publicDomains.map(makeLink).join('');
+  }
+  catch (err)
+  {
+    publicLinks.innerHTML = `<li style="color:red;">Error: ${err.message}</li>`;
+  }
+}
+
+document.querySelector('.refresh').addEventListener('click', async () =>
+{
+  const refresh = await fetch('/api/sync/nginx-domains', {method: 'GET'});
+
+  if (!refresh.ok) throw new Error(`Request failed: ${refresh.status}`);
+
+  loadDomains();
+})
+
+loadDomains();
+</script>

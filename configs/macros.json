@@ -1,0 +1,507 @@
+{
+  "version": 1,
+  "purposes":
+  [
+    {
+      "id": "desktop",
+      "label": "Desktop",
+      "buttons":
+      [
+        {
+          "id": "open_inkscape",
+          "label": "Open Inkscape",
+          "action":
+          {
+            "type": "command",
+            "command": "sh -c 'inkscape >/dev/null 2>&1 &'"
+          }
+        },
+        {
+          "id": "open_blender",
+          "label": "Open Blender",
+          "action":
+          {
+            "type": "command",
+            "command": "sh -c 'blender >/dev/null 2>&1 &'"
+          }
+        },
+        {
+          "id": "open_gimp",
+          "label": "Open GIMP",
+          "action":
+          {
+            "type": "command",
+            "command": "sh -c 'gimp >/dev/null 2>&1 &'"
+          }
+        },
+        {
+          "id": "save",
+          "label": "Save",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+s"
+            ]
+          }
+        },
+        {
+          "id": "undo",
+          "label": "Undo",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+z"
+            ]
+          }
+        },
+        {
+          "id": "redo",
+          "label": "Redo",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+shift+z"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "inkscape",
+      "label": "Inkscape",
+      "buttons": [
+        {
+          "id": "save",
+          "label": "Save",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+s"
+            ]
+          }
+        },
+        {
+          "id": "undo",
+          "label": "Undo",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+z"
+            ]
+          }
+        },
+        {
+          "id": "redo",
+          "label": "Redo",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+shift+z"
+            ]
+          }
+        },
+        {
+          "id": "select_tool",
+          "label": "Select Tool",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "f1"
+            ]
+          }
+        },
+        {
+          "id": "node_tool",
+          "label": "Node Tool",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "f2"
+            ]
+          }
+        },
+        {
+          "id": "zoom_tool",
+          "label": "Zoom Tool",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "f3"
+            ]
+          }
+        },
+        {
+          "id": "zoom_in",
+          "label": "Zoom In",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "="
+            ]
+          }
+        },
+        {
+          "id": "zoom_out",
+          "label": "Zoom Out",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "-"
+            ]
+          }
+        },
+        {
+          "id": "zoom_to_selection",
+          "label": "Zoom to Selection",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "2"
+            ]
+          }
+        },
+        {
+          "id": "zoom_to_drawing",
+          "label": "Zoom to Drawing",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "1"
+            ]
+          }
+        },
+        {
+          "id": "zoom_to_page",
+          "label": "Zoom to Page",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "3"
+            ]
+          }
+        },
+        {
+          "id": "duplicate",
+          "label": "Duplicate",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+d"
+            ]
+          }
+        },
+        {
+          "id": "delete_selection",
+          "label": "Delete",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "delete"
+            ]
+          }
+        },
+        {
+          "id": "flip_horizontal",
+          "label": "Flip Horizontal",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "h"
+            ]
+          }
+        },
+        {
+          "id": "flip_vertical",
+          "label": "Flip Vertical",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "v"
+            ]
+          }
+        },
+        {
+          "id": "rotate_cw",
+          "label": "Rotate 90° CW",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "]"
+            ]
+          }
+        },
+        {
+          "id": "rotate_ccw",
+          "label": "Rotate 90° CCW",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "["
+            ]
+          }
+        },
+        {
+          "id": "fill_stroke",
+          "label": "Fill & Stroke",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+shift+f"
+            ]
+          }
+        },
+        {
+          "id": "object_properties",
+          "label": "Object Properties",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+shift+o"
+            ]
+          }
+        },
+        {
+          "id": "object_to_path",
+          "label": "Object to Path",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+shift+c"
+            ]
+          }
+        },
+        {
+          "id": "cut",
+          "label": "Cut",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+x"
+            ]
+          }
+        },
+        {
+          "id": "copy",
+          "label": "Copy",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+c"
+            ]
+          }
+        },
+        {
+          "id": "paste",
+          "label": "Paste",
+          "action":
+          {
+            "type": "keys",
+            "chords":
+            [
+              "ctrl+v"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "gimp",
+      "label": "GIMP",
+      "buttons":
+      [
+        {
+          "id": "save",
+          "label": "Save",
+          "action": { "type": "keys", "chords": ["ctrl+s"] }
+        },
+        {
+          "id": "undo",
+          "label": "Undo",
+          "action": { "type": "keys", "chords": ["ctrl+z"] }
+        },
+        {
+          "id": "redo",
+          "label": "Redo",
+          "action": { "type": "keys", "chords": ["ctrl+y"] }
+        },
+        {
+          "id": "brush",
+          "label": "Brush",
+          "action": { "type": "keys", "chords": ["p"] }
+        },
+        {
+          "id": "eraser",
+          "label": "Eraser",
+          "action": { "type": "keys", "chords": ["e"] }
+        },
+        {
+          "id": "move",
+          "label": "Move",
+          "action": { "type": "keys", "chords": ["m"] }
+        },
+        {
+          "id": "rect_select",
+          "label": "Rect Select",
+          "action": { "type": "keys", "chords": ["r"] }
+        },
+        {
+          "id": "free_select",
+          "label": "Free Select",
+          "action": { "type": "keys", "chords": ["f"] }
+        },
+        {
+          "id": "zoom",
+          "label": "Zoom",
+          "action": { "type": "keys", "chords": ["z"] }
+        },
+        {
+          "id": "zoom_in",
+          "label": "Zoom In",
+          "action": { "type": "keys", "chords": ["+"] }
+        },
+        {
+          "id": "zoom_out",
+          "label": "Zoom Out",
+          "action": { "type": "keys", "chords": ["-"] }
+        },
+        {
+          "id": "duplicate_layer",
+          "label": "Duplicate Layer",
+          "action": { "type": "keys", "chords": ["ctrl+shift+d"] }
+        },
+        {
+          "id": "merge_down",
+          "label": "Merge Down",
+          "action": { "type": "keys", "chords": ["ctrl+m"] }
+        }
+      ]
+    },
+    {
+      "id": "blender",
+      "label": "Blender",
+      "buttons":
+      [
+        {
+          "id": "save",
+          "label": "Save",
+          "action": { "type": "keys", "chords": ["ctrl+s"] }
+        },
+        {
+          "id": "undo",
+          "label": "Undo",
+          "action": { "type": "keys", "chords": ["ctrl+z"] }
+        },
+        {
+          "id": "redo",
+          "label": "Redo",
+          "action": { "type": "keys", "chords": ["ctrl+shift+z"] }
+        },
+        {
+          "id": "grab",
+          "label": "Grab / Move",
+          "action": { "type": "keys", "chords": ["g"] }
+        },
+        {
+          "id": "rotate",
+          "label": "Rotate",
+          "action": { "type": "keys", "chords": ["r"] }
+        },
+        {
+          "id": "scale",
+          "label": "Scale",
+          "action": { "type": "keys", "chords": ["s"] }
+        },
+        {
+          "id": "extrude",
+          "label": "Extrude",
+          "action": { "type": "keys", "chords": ["e"] }
+        },
+        {
+          "id": "delete",
+          "label": "Delete",
+          "action": { "type": "keys", "chords": ["x"] }
+        },
+        {
+          "id": "select_all",
+          "label": "Select All",
+          "action": { "type": "keys", "chords": ["a"] }
+        },
+        {
+          "id": "deselect_all",
+          "label": "Deselect All",
+          "action": { "type": "keys", "chords": ["alt+a"] }
+        },
+        {
+          "id": "duplicate",
+          "label": "Duplicate",
+          "action": { "type": "keys", "chords": ["shift+d"] }
+        },
+        {
+          "id": "object_mode",
+          "label": "Object Mode",
+          "action": { "type": "keys", "chords": ["tab"] }
+        },
+        {
+          "id": "view_front",
+          "label": "Front View",
+          "action": { "type": "keys", "chords": ["numpad1"] }
+        },
+        {
+          "id": "view_top",
+          "label": "Top View",
+          "action": { "type": "keys", "chords": ["numpad7"] }
+        }
+      ]
+    }
+  ]
+}

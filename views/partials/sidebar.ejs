@@ -1,0 +1,48 @@
+ <!-- 📚 Sidebar -->
+ <aside :class="[
+ collapsed ? 'w-16' : 'w-52',
+ sidebarOpen || window.innerWidth >= 768 ? 'block' : 'hidden',
+]"
+x-cloak
+class="transition-all duration-300 bg-gray-900 border-r border-gray-700 flex flex-col space-y-6 p-4 overflow-y-auto md:block z-40">
+<!--h-screen-->
+<!--sidebarOpen ? 'block absolute z-40 h-full md:relative md:block' : 'hidden md:block'-->
+<!--class="transition-all duration-300 bg-gray-900 border-r border-gray-700 flex flex-col p-4 space-y-6 overflow-hidden min-h-screen "-->
+<div class="flex justify-end">
+<button
+@click="collapsed = !collapsed"
+class="hidden md:flex text-gray-400 hover:text-white w-8 h-8 bg-gray-700 rounded items-center justify-center"
+:title="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+>
+ <!-- Collapse Icon (visible when expanded) -->
+ <i
+     class="kfi-arrow-carrot-2-left text-lg"
+     x-show="!collapsed"
+     x-transition
+     x-cloak
+ ></i>
+
+ <!-- Expand Icon (visible when collapsed) -->
+ <i
+     class="kfi-arrow-carrot-2-right text-lg"
+     x-show="collapsed"
+     x-transition
+     x-cloak
+ ></i>
+</button>
+</div>
+<nav class="space-y-2 <%= staticHeader ? 'pt-16' : '' %>">
+<a href="#" :title="collapsed ? 'Dashboard' : ''" class="flex items-center space-x-2 text-gray-300 hover:text-white">
+ <i class="kfi-dashboard text-icon-lg"></i>
+ <span x-show="!collapsed" x-transition x-cloak>Dashboard</span>
+</a>
+<a href="#" :title="collapsed ? 'Settings' : ''" class="flex items-center space-x-2 text-gray-300 hover:text-white">
+ <i class="kfi-gears-alt-1 text-icon-lg"></i>
+ <span x-show="!collapsed" x-transition x-cloak>Settings</span>
+</a>
+<a href="#" :title="collapsed ? 'Reports' : ''" class="flex items-center space-x-2 text-gray-300 hover:text-white">
+ <i class="kfi-reports text-icon-lg"></i>
+ <span x-show="!collapsed" x-transition x-cloak>Reports</span>
+</a>
+</nav>
+</aside>

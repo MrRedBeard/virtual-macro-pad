@@ -1,0 +1,48 @@
+<div class="form-group">
+      <fieldset class="form-group">
+          <label
+              class="relative block h-8 w-14 rounded-full transition-colors [-webkit-tap-highlight-color:_transparent] bg-gray-600 [&:has(input:checked)]:bg-green-500"
+              >
+              <input type="checkbox" class="peer sr-only" />
+
+              <span
+                  class="absolute inset-y-0 start-0 m-1 size-6 rounded-full bg-white dark:bg-gray-900 transition-[inset-inline-start] peer-checked:start-6"
+              ></span>
+          </label>
+      </fieldset>
+    </div>
+
+    <div class="form-group">
+      <fieldset class="rounded-full form-group">
+          <p>Label Text</p>
+          <!-- relative block h-8 w-14 rounded-full bg-gray-300 transition-colors [-webkit-tap-highlight-color:_transparent] has-checked:bg-green-500 dark:bg-gray-600 dark:has-checked:bg-green-600 -->
+          <label for="AcceptConditions3" class="relative inline-block cursor-pointer h-8 w-14 bg-gray-600 rounded-full transition-colors [-webkit-tap-highlight-color:_transparent] [&:has(input:checked)]:bg-green-500">
+              <!-- 1. The actual checkbox -->
+              <input
+              type="checkbox"
+              id="AcceptConditions3"
+              class="peer sr-only"
+              />
+
+              <!-- 3. The unchecked icon -->
+              <i
+              class="kfi-math-multiply
+                      absolute inset-y-0 left-6 m-1 w-6 h-6 grid place-content-center
+                      peer-checked:hidden"
+              ></i>
+
+              <!-- 2. The “handle” -->
+              <span
+              class="absolute inset-y-0 left-0 m-1 w-6 h-6 bg-white dark:bg-gray-900 rounded-full
+                      transition-all peer-checked:left-6"
+              ></span>
+
+              <!-- 4. The checked icon -->
+              <i
+              class="kfi-check
+                      absolute inset-y-0 left-0 m-1 w-6 h-6 grid place-content-center
+                      hidden peer-checked:grid"
+              ></i>
+          </label>
+      </fieldset>
+    </div>
