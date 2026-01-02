@@ -20,7 +20,7 @@ class clsMacroPad
         /** @type {HTMLElement|null} */
         this.logoEl = null; // logo for minimize and restore
 
-        /** @type {any|null} */
+        /** @type {'norm'|'min'} */
         this.windowStatus = 'norm'; // norm min
 
         /** @type {HTMLElement|null} */
@@ -68,7 +68,7 @@ class clsMacroPad
     async init()
     {
         this.logoEl = document.querySelector(".logo");
-        this.logoEl.addEventListener('click', () =>
+        this.bindActivate(this.logoEl, () =>
         {
             // this.windowStatus = 'norm'; // norm min
             if (this.windowStatus === 'norm')
@@ -88,30 +88,56 @@ class clsMacroPad
         this.purposeDownEl = document.querySelector(".purpose-down");
 
         this.purposeRefreshEl = document.querySelector(".refresh-macros");
-        this.purposeRefreshEl.addEventListener('click', async () =>
+        this.bindActivate(this.purposeRefreshEl, async () =>
         {
             await this.refreshMacros();
         });
 
         this.closeMacrosEl = document.querySelector(".close-macros");
-        this.closeMacrosEl.addEventListener('click', async () =>
+        this.bindActivate(this.closeMacrosEl, async () =>
         {
             await this.quit();
         });
-        
+
 
         this.buttonsGridEl = document.querySelector(".macro-buttons");
 
         await this.refreshMacros();
 
-        this.purposeUpEl.addEventListener('click', () =>
+        this.bindActivate(this.purposeUpEl, () =>
         {
             this.nextPurposeIndex(1);
         });
 
-        this.purposeDownEl.addEventListener('click', () =>
+        this.bindActivate(this.purposeDownEl, () =>
         {
             this.nextPurposeIndex(-1);
+        });
+    }
+
+    /**
+     * Attach a pointer-safe activation handler.
+     *
+     * @param {HTMLElement} el
+     * @param {Function} handler
+     * @returns {void}
+     */
+    bindActivate(el, handler)
+    {
+        if (!el)
+        {
+            return;
+        }
+
+        el.addEventListener('pointercancel', () =>
+        {
+            // no-op for now, but intentionally handled
+        });
+
+        el.addEventListener('pointerdown', (ev) =>
+        {
+            ev.preventDefault();
+            handler(ev);
         });
     }
 
@@ -164,7 +190,7 @@ class clsMacroPad
             let btn = document.createElement('button');
             btn.classList.add('macro-button');
             btn.innerHTML = macro.label;
-            btn.addEventListener('click', async () =>
+            this.bindActivate(btn, async () =>
             {
                 //console.log(macro, macro.id, macro.label, macro.action.type, macro.action.chords);
                 await this.executeMacro(macro);
@@ -283,9 +309,9 @@ class clsMacroPad
     async quit()
     {
         await fetch("/api/app/quit",
-        {
-            method: "POST"
-        });
+            {
+                method: "POST"
+            });
     }
 
     /**

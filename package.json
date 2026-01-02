@@ -1,6 +1,6 @@
 {
   "name": "virtual-macropad",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Virtual MacroPad for Debian - developed for use with x11 i3 lightdm lxqt-panel on an aging tablet - not wayland",
   "main": "main.js",
   "homepage": "http://git.lan/mrb/macro-pad",
