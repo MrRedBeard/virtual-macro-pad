@@ -1,5 +1,7 @@
 # Virtual MacroPad
 
+**Does not work for Wayland**
+
 A **local-first macropad system** built with **Electron + Node.js**, backed by JSON configuration, and paired with a structured Tailwind driven UI layer.
 
 This project is designed to:
